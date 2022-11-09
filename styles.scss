@@ -1,0 +1,289 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
+
+// === MIXIN ===
+@mixin roboto {
+  font-family: "Roboto", sans-serif;
+}
+
+@mixin list-null {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+// === / MIXIN ===
+
+// === VARIABLES ===
+$base: 4px;
+
+$fw-light: 300;
+$fw-regular: 400;
+$fw-medium: 500;
+$fw-bold: 700;
+
+$fs-sm: 15px;
+$fs-md: 16px;
+$fs-mdlg: 18px;
+$fs-lg: 36px;
+$fs-xl: 48px;
+$fs-xxl: 114px;
+
+$padding-vertical-xxl: $base * 45;
+$padding-vertical-xl: $base * 35;
+$padding-vertical-md: $base * 25;
+$padding-vertical-sm: $base * 15;
+$padding-vertical-xs: $base * 5;
+
+$transition: 0.2s;
+
+// Gray
+$color-primary-50: #fdfdff;
+$color-primary-100: #f1f3f2;
+$color-primary-300: #ababab;
+$color-primary-500: #767474;
+$color-primary-700: #333b41;
+
+// Red
+$color-danger: #d31414;
+
+// Orange
+$color-primary-active: #f9804b;
+
+// Green
+$color-secondary-active: #4b9200;
+
+$color-orange-gradient: #fed290;
+$color-pink-gradient: #febdab;
+$color-yellow: #ffee2e;
+$color-black: #000;
+$color-white: #fff;
+
+$color-primary: $color-primary-700;
+
+// === / VARIABLES ===
+
+// === COMMON ===
+body {
+  @include roboto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  padding: 0;
+  margin: 0;
+  font-weight: $fw-regular;
+}
+
+h1 {
+  font-size: $fs-xxl;
+  font-weight: $fw-bold;
+  text-transform: uppercase;
+}
+
+a {
+  text-decoration: none;
+}
+
+.section-outer {
+}
+
+.section-inner {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: $padding-vertical-md $base * 7 $padding-vertical-sm $base *
+    7;
+  padding-top: $padding-vertical-md;
+  padding-bottom: $padding-vertical-sm;
+
+  &--wide {
+    max-width: 1600px;
+  }
+}
+// === / COMMON ===
+
+// === HEADER ===
+.section-header {
+  background-color: $color-black;
+  color: $color-white;
+
+  .section-inner {
+    padding-top: $base * 4;
+    padding-bottom: $base * 4;
+  }
+}
+
+.main-navigation {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  display: block;
+  max-width: $base * 20;
+  min-width: $base * 20;
+  text-align: center;
+  border: 1px solid $color-white;
+  border-radius: calc($base/2);
+
+  &__link {
+    position: relative;
+    display: inline-block;
+    margin: $base 0;
+    color: $color-white;
+
+    &::before {
+      position: absolute;
+      bottom: -0.5px;
+      left: 12.5px;
+      z-index: 1;
+      content: url(./assets/icons/bamboo.svg);
+    }
+  }
+}
+
+.nav {
+  margin-left: $base * 16;
+}
+
+.nav-wrapper {
+  @include list-null();
+
+  display: flex;
+  align-items: center;
+
+  &__item {
+    & + & {
+      margin-left: $base * 14;
+    }
+    &:last-child {
+      margin-right: $base * 14;
+    }
+    &-link {
+      font-size: $fs-md;
+      font-weight: $fw-medium;
+      color: $color-white;
+      white-space: nowrap;
+      text-decoration: none;
+      transition: $transition;
+
+      &:hover {
+        color: $color-primary-active;
+      }
+
+      &--active {
+        color: $color-primary-active;
+      }
+    }
+  }
+}
+
+.credentials {
+  margin-left: auto;
+
+  &__item {
+    padding-left: $base * 15;
+
+    &-link {
+      font-size: $fs-md;
+      font-weight: $fw-medium;
+      color: $color-white;
+      white-space: nowrap;
+      text-decoration: none;
+      transition: $transition;
+
+      &:hover {
+        color: $color-primary-active;
+      }
+
+      &--active {
+        color: $color-primary-active;
+      }
+    }
+  }
+}
+
+// === / HEADER ===
+
+// === HERO-IMAGE ===
+.section-hero-image {
+  position: relative;
+  background: url(./assets/images/GiantPanda.png) no-repeat 50% 50%;
+
+  .section-inner {
+    padding-top: $base * 20;
+    padding-bottom: $base * 25;
+  }
+}
+
+.hero-heading-wrapper {
+  position: relative;
+  width: $base * 130;
+  margin-left: auto;
+
+  &::before {
+    position: absolute;
+    z-index: 0;
+    width: $base * 116;
+    height: $base * 116;
+    bottom: $base * 8;
+    left: 34%;
+    border-radius: 50%;
+    transform: translateX((-50%));
+    background-color: $color-primary-active;
+    content: "";
+  }
+
+  h1 {
+    position: relative;
+    color: $color-white;
+    line-height: 0.75;
+    text-align: center;
+
+    span {
+      color: $color-yellow;
+    }
+  }
+}
+
+.hero-button-wrapper {
+  display: flex;
+  width: $base * 130;
+  margin-top: $base * 15;
+  margin-left: auto;
+
+  button {
+    margin: 0 auto;
+  }
+}
+// === / HERO-IMAGE ===
+
+// === BACKSTAGE ===
+.section-backstage {
+  .section-inner {
+  }
+}
+// === / BACKSTAGE ===
+
+// === PICK-A-FRIEND ===
+.section-pick-a-friend {
+  .section-inner {
+  }
+}
+// === / PICK-A-FRIEND ===
+
+// === TESTIMONIALS ===
+.section-testimonials {
+  .section-inner {
+  }
+}
+// === / TESTIMONIALS ===
+
+// === FOOTER ===
+.section-footer {
+  .section-inner {
+  }
+}
+// === / FOOTER ===
