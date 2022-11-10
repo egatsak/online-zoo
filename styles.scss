@@ -10,6 +10,13 @@
   padding: 0;
   list-style: none;
 }
+
+@mixin button-text {
+  text-transform: uppercase;
+  font-size: $fs-sm;
+  font-weight: $fw-medium;
+  line-height: 1.4;
+}
 // === / MIXIN ===
 
 // === VARIABLES ===
@@ -20,9 +27,9 @@ $fw-regular: 400;
 $fw-medium: 500;
 $fw-bold: 700;
 
-$fs-sm: 15px;
-$fs-md: 16px;
-$fs-mdlg: 18px;
+$fs-xs: 15px;
+$fs-sm: 16px;
+$fs-md: 24px;
 $fs-lg: 36px;
 $fs-xl: 48px;
 $fs-xxl: 114px;
@@ -46,7 +53,9 @@ $color-primary-700: #333b41;
 $color-danger: #d31414;
 
 // Orange
-$color-primary-active: #f9804b;
+$color-primary-active-300: #fe9013;
+$color-primary-active-500: #f9804b;
+$color-primary-active-700: #e47209;
 
 // Green
 $color-secondary-active: #4b9200;
@@ -62,8 +71,14 @@ $color-primary: $color-primary-700;
 // === / VARIABLES ===
 
 // === COMMON ===
+* {
+  box-sizing: border-box;
+}
+
 body {
   @include roboto;
+
+  color: $color-primary-700;
 }
 
 h1,
@@ -75,6 +90,7 @@ h6 {
   padding: 0;
   margin: 0;
   font-weight: $fw-regular;
+  line-height: 1.2;
 }
 
 h1 {
@@ -83,8 +99,30 @@ h1 {
   text-transform: uppercase;
 }
 
+h2 {
+  font-size: $fs-xl;
+}
+
 a {
   text-decoration: none;
+}
+
+.subtitle {
+  font-size: $fs-md;
+}
+
+.text {
+  font-size: $fs-sm;
+  line-height: 1.4;
+}
+
+.small-paragraph {
+  font-size: $fs-xs;
+  font-weight: $fw-light;
+}
+
+.ta-c {
+  text-align: center;
 }
 
 .section-outer {
@@ -95,11 +133,41 @@ a {
   margin: 0 auto;
   padding: $padding-vertical-md $base * 7 $padding-vertical-sm $base *
     7;
-  padding-top: $padding-vertical-md;
-  padding-bottom: $padding-vertical-sm;
+  padding-top: $padding-vertical-xl;
+  padding-bottom: $padding-vertical-md;
 
   &--wide {
     max-width: 1600px;
+  }
+}
+
+.btn {
+  @include button-text();
+
+  position: relative;
+  box-sizing: border-box;
+  min-width: $base * 75;
+  padding: $base * 4 0;
+  background: linear-gradient(#f9804b, #fe9013);
+  border: 1px solid transparent;
+  border-radius: $base * 6;
+  color: $color-white;
+  transition: $transition;
+  -webkit-transition: $transition;
+  //----------------------------------------------------FIX TRANSITION!
+  cursor: pointer;
+
+  &:hover {
+    background: $color-primary-active-700;
+  }
+
+  &:active {
+    background: $color-secondary-active;
+  }
+
+  &[disabled] {
+    background: $color-primary-500;
+    cursor: default;
   }
 }
 // === / COMMON ===
@@ -162,7 +230,7 @@ a {
       margin-right: $base * 14;
     }
     &-link {
-      font-size: $fs-md;
+      font-size: $fs-sm;
       font-weight: $fw-medium;
       color: $color-white;
       white-space: nowrap;
@@ -170,11 +238,11 @@ a {
       transition: $transition;
 
       &:hover {
-        color: $color-primary-active;
+        color: $color-primary-active-500;
       }
 
       &--active {
-        color: $color-primary-active;
+        color: $color-primary-active-500;
       }
     }
   }
@@ -187,7 +255,7 @@ a {
     padding-left: $base * 15;
 
     &-link {
-      font-size: $fs-md;
+      font-size: $fs-sm;
       font-weight: $fw-medium;
       color: $color-white;
       white-space: nowrap;
@@ -195,11 +263,11 @@ a {
       transition: $transition;
 
       &:hover {
-        color: $color-primary-active;
+        color: $color-primary-active-500;
       }
 
       &--active {
-        color: $color-primary-active;
+        color: $color-primary-active-500;
       }
     }
   }
@@ -210,7 +278,8 @@ a {
 // === HERO-IMAGE ===
 .section-hero-image {
   position: relative;
-  background: url(./assets/images/GiantPanda.png) no-repeat 50% 50%;
+  background: url(./assets/images/GiantPanda.png) no-repeat 50% 100%;
+  background-size: cover;
 
   .section-inner {
     padding-top: $base * 20;
@@ -223,24 +292,24 @@ a {
   width: $base * 130;
   margin-left: auto;
 
-  &::before {
+  &::after {
     position: absolute;
-    z-index: 0;
+
     width: $base * 116;
     height: $base * 116;
     bottom: $base * 8;
     left: 34%;
     border-radius: 50%;
     transform: translateX((-50%));
-    background-color: $color-primary-active;
+    background-color: $color-primary-active-500;
     content: "";
   }
 
   h1 {
     position: relative;
+    z-index: 1;
     color: $color-white;
     line-height: 0.75;
-    text-align: center;
 
     span {
       color: $color-yellow;
@@ -250,22 +319,128 @@ a {
 
 .hero-button-wrapper {
   display: flex;
+  justify-content: center;
   width: $base * 130;
   margin-top: $base * 15;
   margin-left: auto;
-
-  button {
-    margin: 0 auto;
-  }
 }
 // === / HERO-IMAGE ===
 
 // === BACKSTAGE ===
 .section-backstage {
+  position: relative;
+  overflow: hidden;
+
   .section-inner {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: $base * 10;
+  }
+
+  &__img-wrapper {
+    flex: 1 4 600px;
+    height: inherit;
+    background: url(./assets/images/bamboo-cap.jpg) no-repeat 50% 50%;
+  }
+
+  &__content {
+    flex: 4 1 520px;
+    padding-left: 2vw;
+
+    /*     &::after { ! ---------------------------- ! TODO: fix palm leaf & other position
+      display: inline-block;
+      height: 50%;
+      position: absolute;
+      top: 0;
+      right: 0;
+      content: url(./assets/images/flower_foto1.png);
+    } */
+  }
+
+  .aside-image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    /*     left: 100%; */
+    transform: translateX((50%));
+    //z-index: 1;
+  }
+
+  h2 {
+    margin-bottom: $base * 5;
+  }
+
+  .subtitle {
+    margin: $base * 17 0 $base * 8;
   }
 }
+
 // === / BACKSTAGE ===
+
+// === FAVORITE ===
+.section-favorite {
+  .section-inner {
+  }
+
+  .slider-wrapper {
+    position: relative;
+  }
+
+  .slider-favorite {
+    @include list-null();
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 1%;
+
+    &__item {
+      display: block;
+      border: 1px solid $color-primary-active-500;
+      border-radius: $base;
+
+      img {
+      }
+
+      &__meta {
+        &-name {
+          @include button-text();
+        }
+
+        &-subtitle {
+        }
+      }
+    }
+  }
+
+  .btn-favorite {
+    position: absolute;
+    top: 50%;
+    display: block;
+    width: $base * 15;
+    height: $base * 15;
+    background: url(./assets/icons/arrow_elips_2.svg) no-repeat 50%
+      50%;
+    border-radius: 100%;
+
+    &--prev {
+      right: 100%;
+      margin-right: $base * 16;
+      transform: translateY(-50%);
+    }
+
+    &--next {
+      left: 100%;
+      margin-left: $base * 16;
+      transform: translateY(-50%) rotate(180deg);
+    }
+
+    &:active {
+      background: url(./assets/icons/arrow-green.svg) no-repeat 50%
+        50%;
+    }
+  }
+}
+// === / FAVORITE ===
 
 // === PICK-A-FRIEND ===
 .section-pick-a-friend {

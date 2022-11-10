@@ -1,6 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: "Roboto", sans-serif;
+  color: #333b41;
 }
 
 h1,
@@ -12,6 +17,7 @@ h6 {
   padding: 0;
   margin: 0;
   font-weight: 400;
+  line-height: 1.2;
 }
 
 h1 {
@@ -20,19 +26,69 @@ h1 {
   text-transform: uppercase;
 }
 
+h2 {
+  font-size: 48px;
+}
+
 a {
   text-decoration: none;
+}
+
+.subtitle {
+  font-size: 24px;
+}
+
+.text {
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.small-paragraph {
+  font-size: 15px;
+  font-weight: 300;
+}
+
+.ta-c {
+  text-align: center;
 }
 
 .section-inner {
   max-width: 1160px;
   margin: 0 auto;
   padding: 100px 28px 60px 28px;
-  padding-top: 100px;
-  padding-bottom: 60px;
+  padding-top: 140px;
+  padding-bottom: 100px;
 }
 .section-inner--wide {
   max-width: 1600px;
+}
+
+.btn {
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.4;
+  position: relative;
+  box-sizing: border-box;
+  min-width: 300px;
+  padding: 16px 0;
+  background: linear-gradient(#f9804b, #fe9013);
+  border: 1px solid transparent;
+  border-radius: 24px;
+  color: #fff;
+  transition: 0.2s;
+  -webkit-transition: 0.2s;
+  cursor: pointer;
+}
+.btn:hover {
+  background: #e47209;
+}
+.btn:active {
+  background: #4b9200;
+}
+.btn[disabled] {
+  background: #767474;
+  cursor: default;
 }
 
 .section-header {
@@ -126,7 +182,8 @@ a {
 
 .section-hero-image {
   position: relative;
-  background: url(./assets/images/GiantPanda.png) no-repeat 50% 50%;
+  background: url(./assets/images/GiantPanda.png) no-repeat 50% 100%;
+  background-size: cover;
 }
 .section-hero-image .section-inner {
   padding-top: 80px;
@@ -138,9 +195,8 @@ a {
   width: 520px;
   margin-left: auto;
 }
-.hero-heading-wrapper::before {
+.hero-heading-wrapper::after {
   position: absolute;
-  z-index: 0;
   width: 464px;
   height: 464px;
   bottom: 32px;
@@ -152,9 +208,9 @@ a {
 }
 .hero-heading-wrapper h1 {
   position: relative;
+  z-index: 1;
   color: #fff;
   line-height: 0.75;
-  text-align: center;
 }
 .hero-heading-wrapper h1 span {
   color: #ffee2e;
@@ -162,12 +218,96 @@ a {
 
 .hero-button-wrapper {
   display: flex;
+  justify-content: center;
   width: 520px;
   margin-top: 60px;
   margin-left: auto;
 }
-.hero-button-wrapper button {
-  margin: 0 auto;
+
+.section-backstage {
+  position: relative;
+  overflow: hidden;
+}
+.section-backstage .section-inner {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 40px;
+}
+.section-backstage__img-wrapper {
+  flex: 1 4 600px;
+  height: inherit;
+  background: url(./assets/images/bamboo-cap.jpg) no-repeat 50% 50%;
+}
+.section-backstage__content {
+  flex: 4 1 520px;
+  padding-left: 2vw;
+  /*     &::after { ! ---------------------------- ! TODO: fix palm leaf & other position
+    display: inline-block;
+    height: 50%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    content: url(./assets/images/flower_foto1.png);
+  } */
+}
+.section-backstage .aside-image {
+  position: absolute;
+  top: 0;
+  right: 0;
+  /*     left: 100%; */
+  transform: translateX(50%);
+}
+.section-backstage h2 {
+  margin-bottom: 20px;
+}
+.section-backstage .subtitle {
+  margin: 68px 0 32px;
+}
+
+.section-favorite .slider-wrapper {
+  position: relative;
+}
+.section-favorite .slider-favorite {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-gap: 1%;
+}
+.section-favorite .slider-favorite__item {
+  display: block;
+  border: 1px solid #f9804b;
+  border-radius: 4px;
+}
+.section-favorite .slider-favorite__item__meta-name {
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+.section-favorite .btn-favorite {
+  position: absolute;
+  top: 50%;
+  display: block;
+  width: 60px;
+  height: 60px;
+  background: url(./assets/icons/arrow_elips_2.svg) no-repeat 50% 50%;
+  border-radius: 100%;
+}
+.section-favorite .btn-favorite--prev {
+  right: 100%;
+  margin-right: 64px;
+  transform: translateY(-50%);
+}
+.section-favorite .btn-favorite--next {
+  left: 100%;
+  margin-left: 64px;
+  transform: translateY(-50%) rotate(180deg);
+}
+.section-favorite .btn-favorite:active {
+  background: url(./assets/icons/arrow-green.svg) no-repeat 50% 50%;
 }
 
 /*# sourceMappingURL=styles.css.map */
