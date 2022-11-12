@@ -1,0 +1,21 @@
+# ONLINE ZOO
+
+## Desktop layout
+
+PLEASE don't forget to set viewport width to 1600px!
+
+Studying at RS School & practicing Flex & Grid layout, SCSS, responsive & adaptive webpage building (TBD).
+
+[Deploy link at Github Pages](https://egatsak.github.io/online-zoo)
+
+![asd](https://user-images.githubusercontent.com/103357389/201493216-81f64b51-938d-4d04-8ac6-99d562037cd3.jpg)
+
+## Acknowledgements
+
+[RS School](https://rs.school/)
+
+[Layout at Figma](https://www.figma.com/file/jfEFwkXVj1WRq7sUHDr8os/PetStory-online")
+
+[SCSS](https://sass-lang.com/)
+
+[Normalize.css](https://necolas.github.io/normalize.css/)

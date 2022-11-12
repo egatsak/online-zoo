@@ -94,12 +94,6 @@ h6 {
   line-height: 1.2;
 }
 
-h1 {
-  font-size: $fs-xxl;
-  font-weight: $fw-bold;
-  text-transform: uppercase;
-}
-
 h2 {
   font-size: $fs-xl;
 }
@@ -140,9 +134,9 @@ a {
   text-align: center;
 }
 
-.section-outer {
+/* .section-outer {
 }
-
+ */
 .section-inner {
   max-width: 1160px;
   margin: 0 auto;
@@ -168,7 +162,6 @@ a {
   outline: transparent;
   border-radius: $base * 6;
   color: $color-white;
-  //----------------------------------------------------FIX TRANSITION!
   cursor: pointer;
 
   &--square {
@@ -201,6 +194,7 @@ a {
   &[disabled] {
     background: $color-primary-500;
     cursor: default;
+    pointer-events: none;
   }
 }
 
@@ -213,6 +207,18 @@ a {
   overflow: hidden;
   clip-path: rect(0 0 0 0);
   border: 0;
+}
+
+.background-darken {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100vh;
+  height: 100vh;
+  z-index: 1;
+  background: $color-primary-700;
+  opacity: 0.5;
 }
 // === / COMMON ===
 
@@ -270,9 +276,11 @@ a {
     & + & {
       margin-left: $base * 14;
     }
+
     &:last-child {
       margin-right: $base * 14;
     }
+
     &-link {
       font-size: $fs-sm;
       font-weight: $fw-medium;
@@ -285,11 +293,15 @@ a {
         color: $color-primary-active-500;
       }
 
-      &--active {
+      /*       &--active {
         color: $color-primary-active-500;
-      }
+      } */
     }
   }
+}
+///---------------------------------------------------------to delete
+.active {
+  color: $color-primary-active-500;
 }
 
 .credentials {
@@ -322,7 +334,7 @@ a {
 // === HERO-IMAGE ===
 .section-hero-image {
   position: relative;
-  background: url(./assets/images/GiantPanda.png) no-repeat 50% 100%;
+  background: url(./assets/images/GiantPanda.jpg) no-repeat 50% 100%;
   background-size: cover;
 
   .section-inner {
@@ -338,7 +350,6 @@ a {
 
   &::after {
     position: absolute;
-
     width: $base * 116;
     height: $base * 116;
     bottom: $base * 8;
@@ -349,11 +360,14 @@ a {
     content: "";
   }
 
-  h1 {
+  .hero-heading {
     position: relative;
     z-index: 1;
     color: $color-white;
     line-height: 0.75;
+    font-size: $fs-xxl;
+    font-weight: $fw-bold;
+    text-transform: uppercase;
 
     span {
       color: $color-yellow;
@@ -425,9 +439,9 @@ a {
 .section-favorite {
   position: relative;
 
-  .section-inner {
+  /*  .section-inner {
   }
-
+ */
   .slider-wrapper {
     position: relative;
   }
@@ -435,35 +449,64 @@ a {
   .slider-favorite {
     @include list-null();
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: auto auto auto;
     grid-template-rows: 1fr 1fr;
     grid-gap: 1%;
 
     &__item {
-      display: block;
-      border: 1px solid $color-primary-active-500;
-      border-radius: $base;
-      overflow: hidden;
-      // ------------------------------------------------ FIX responsive cards!
+      position: relative;
+      cursor: pointer;
+
+      &:hover {
+        transform: scale(1.05);
+        background: $color-primary-700;
+        border-radius: $base;
+        z-index: 2;
+        transition: all 0.2s ease-out;
+
+        & > div {
+          display: flex;
+        }
+        & > img {
+          opacity: 0.5;
+        }
+      }
+
       img {
-        object-fit: cover;
+        /*    width: $base * 90; */
+        height: $base * 90;
+        border: 1px solid $color-primary-active-500;
+        border-radius: $base;
       }
 
       &__meta {
-        position: relative;
+        display: none;
+        position: absolute;
+        bottom: -15%;
+        width: $base * 90;
         padding: $base $base * 4 $base * 4;
+        background-color: $color-white;
+        border-radius: 0 0 $base $base;
+        border: 1px solid $color-primary-active-500;
+        border-top: transparent;
+        transition: 0.2s ease;
+        z-index: 2;
+
+        .meta-wrapper {
+          padding-top: $base;
+        }
 
         &-name {
           @include button-text();
         }
 
-        &-subtitle {
+        /*      &-subtitle {
         }
-
+ */
         svg {
           position: absolute;
-          top: $base * 2;
-          right: $base * 2;
+          top: $base * 3;
+          right: $base * 3;
         }
       }
     }
@@ -584,7 +627,7 @@ a {
   .btn-wrapper {
     display: flex;
     justify-content: center;
-    margin-top: $base * 20;
+    margin-top: $base * 15;
 
     a {
       box-sizing: border-box;
@@ -647,6 +690,7 @@ a {
   position: relative;
 
   .section-inner {
+    padding-bottom: $padding-vertical-xxl;
   }
 
   .testimonials-list {
@@ -693,11 +737,11 @@ a {
 
         &__meta {
           margin-left: $base * 3;
-          &-name {
+          /*           &-name {
           }
 
           &-credentials {
-          }
+          } */
         }
       }
     }
@@ -820,18 +864,40 @@ a {
         background-color: inherit;
       }
 
-      input:empty {
-        color: $color-primary-200;
-      }
-
-      input:invalid {
+      /*       input:invalid {
         border: 1px solid $color-danger;
+      } */
+
+      input:invalid + input {
+        border: 1px solid $color-danger;
+        color: $color-danger;
       }
 
+      /*      input:empty + input {
+        color: $color-secondary-active;
+        border: 1px solid $color-secondary-active;
+      } */
+
+      /*       input:invalid + input {
+        border: 1px solid $color-danger;
+        color: $color-danger;
+      }
+ */
       input:invalid + input:hover,
       input:invalid + input:active {
         border: 1px solid $color-danger;
         color: $color-danger;
+      }
+
+      input:valid + input {
+        color: $color-secondary-active;
+        border: 1px solid $color-secondary-active;
+      }
+
+      input:valid + input:hover,
+      input:valid + input:active {
+        color: $color-secondary-active;
+        border: 1px solid $color-secondary-active;
       }
 
       .btn--submit {
@@ -840,7 +906,7 @@ a {
         font-weight: $fw-regular;
         text-transform: none;
         border: 1px solid $color-primary-active-500;
-        color: $color-primary-500;
+        color: $color-black;
       }
 
       .btn--submit:hover,
@@ -858,12 +924,15 @@ a {
     align-items: flex-end;
     margin-top: $base * 11;
 
-    .socials {
-    }
+    /*    .socials {
+    } */
 
     .nav,
     .credentials {
       padding-bottom: $base * 2;
+    }
+    .active {
+      color: $color-primary-active-500;
     }
 
     .credentials {

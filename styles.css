@@ -20,12 +20,6 @@ h6 {
   line-height: 1.2;
 }
 
-h1 {
-  font-size: 114px;
-  font-weight: 700;
-  text-transform: uppercase;
-}
-
 h2 {
   font-size: 48px;
 }
@@ -66,6 +60,9 @@ a {
   text-align: center;
 }
 
+/* .section-outer {
+}
+ */
 .section-inner {
   max-width: 1160px;
   margin: 0 auto;
@@ -117,6 +114,7 @@ a {
 .btn[disabled] {
   background: #767474;
   cursor: default;
+  pointer-events: none;
 }
 
 .visually-hidden {
@@ -128,6 +126,18 @@ a {
   overflow: hidden;
   clip-path: rect(0 0 0 0);
   border: 0;
+}
+
+.background-darken {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100vh;
+  height: 100vh;
+  z-index: 1;
+  background: #333b41;
+  opacity: 0.5;
 }
 
 .section-header {
@@ -190,11 +200,15 @@ a {
   white-space: nowrap;
   text-decoration: none;
   transition: 0.2s;
+  /*       &--active {
+    color: $color-primary-active-500;
+  } */
 }
 .nav-wrapper__item-link:hover {
   color: #f9804b;
 }
-.nav-wrapper__item-link--active {
+
+.active {
   color: #f9804b;
 }
 
@@ -221,7 +235,7 @@ a {
 
 .section-hero-image {
   position: relative;
-  background: url(./assets/images/GiantPanda.png) no-repeat 50% 100%;
+  background: url(./assets/images/GiantPanda.jpg) no-repeat 50% 100%;
   background-size: cover;
 }
 .section-hero-image .section-inner {
@@ -245,13 +259,16 @@ a {
   background-color: #f9804b;
   content: "";
 }
-.hero-heading-wrapper h1 {
+.hero-heading-wrapper .hero-heading {
   position: relative;
   z-index: 1;
   color: #fff;
   line-height: 0.75;
+  font-size: 114px;
+  font-weight: 700;
+  text-transform: uppercase;
 }
-.hero-heading-wrapper h1 span {
+.hero-heading-wrapper .hero-heading span {
   color: #ffee2e;
 }
 
@@ -305,6 +322,9 @@ a {
 
 .section-favorite {
   position: relative;
+  /*  .section-inner {
+   }
+  */
 }
 .section-favorite .slider-wrapper {
   position: relative;
@@ -314,22 +334,51 @@ a {
   padding: 0;
   list-style: none;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: auto auto auto;
   grid-template-rows: 1fr 1fr;
   grid-gap: 1%;
 }
 .section-favorite .slider-favorite__item {
-  display: block;
-  border: 1px solid #f9804b;
+  position: relative;
+  cursor: pointer;
+}
+.section-favorite .slider-favorite__item:hover {
+  transform: scale(1.05);
+  background: #333b41;
   border-radius: 4px;
-  overflow: hidden;
+  z-index: 2;
+  transition: all 0.2s ease-out;
+}
+.section-favorite .slider-favorite__item:hover > div {
+  display: flex;
+}
+.section-favorite .slider-favorite__item:hover > img {
+  opacity: 0.5;
 }
 .section-favorite .slider-favorite__item img {
-  object-fit: cover;
+  /*    width: $base * 90; */
+  height: 360px;
+  border: 1px solid #f9804b;
+  border-radius: 4px;
 }
 .section-favorite .slider-favorite__item__meta {
-  position: relative;
+  display: none;
+  position: absolute;
+  bottom: -15%;
+  width: 360px;
   padding: 4px 16px 16px;
+  background-color: #fff;
+  border-radius: 0 0 4px 4px;
+  border: 1px solid #f9804b;
+  border-top: transparent;
+  transition: 0.2s ease;
+  z-index: 2;
+  /*      &-subtitle {
+         }
+  */
+}
+.section-favorite .slider-favorite__item__meta .meta-wrapper {
+  padding-top: 4px;
 }
 .section-favorite .slider-favorite__item__meta-name {
   text-transform: uppercase;
@@ -339,8 +388,8 @@ a {
 }
 .section-favorite .slider-favorite__item__meta svg {
   position: absolute;
-  top: 8px;
-  right: 8px;
+  top: 12px;
+  right: 12px;
 }
 .section-favorite .btn-favorite {
   position: absolute;
@@ -416,7 +465,7 @@ a {
 .section-pick-a-friend .btn-wrapper {
   display: flex;
   justify-content: center;
-  margin-top: 80px;
+  margin-top: 60px;
 }
 .section-pick-a-friend .btn-wrapper a {
   box-sizing: border-box;
@@ -470,6 +519,9 @@ a {
 .section-testimonials {
   position: relative;
 }
+.section-testimonials .section-inner {
+  padding-bottom: 180px;
+}
 .section-testimonials .testimonials-list {
   margin: 0;
   padding: 0;
@@ -498,6 +550,11 @@ a {
 }
 .section-testimonials .testimonials-list__item-heading__meta {
   margin-left: 12px;
+  /*           &-name {
+  }
+
+  &-credentials {
+  } */
 }
 .section-testimonials .slider-wrapper {
   display: flex;
@@ -582,6 +639,18 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  /*       input:invalid {
+    border: 1px solid $color-danger;
+  } */
+  /*      input:empty + input {
+    color: $color-secondary-active;
+    border: 1px solid $color-secondary-active;
+  } */
+  /*       input:invalid + input {
+         border: 1px solid $color-danger;
+         color: $color-danger;
+       }
+  */
 }
 .section-footer__forms .form-subscription__input {
   box-sizing: border-box;
@@ -595,16 +664,23 @@ a {
   color: #fff;
   background-color: inherit;
 }
-.section-footer__forms .form-subscription input:empty {
-  color: #bdbdbd;
-}
-.section-footer__forms .form-subscription input:invalid {
+.section-footer__forms .form-subscription input:invalid + input {
   border: 1px solid #d31414;
+  color: #d31414;
 }
 .section-footer__forms .form-subscription input:invalid + input:hover,
 .section-footer__forms .form-subscription input:invalid + input:active {
   border: 1px solid #d31414;
   color: #d31414;
+}
+.section-footer__forms .form-subscription input:valid + input {
+  color: #4b9200;
+  border: 1px solid #4b9200;
+}
+.section-footer__forms .form-subscription input:valid + input:hover,
+.section-footer__forms .form-subscription input:valid + input:active {
+  color: #4b9200;
+  border: 1px solid #4b9200;
 }
 .section-footer__forms .form-subscription .btn--submit {
   margin-left: 12px;
@@ -612,7 +688,7 @@ a {
   font-weight: 400;
   text-transform: none;
   border: 1px solid #f9804b;
-  color: #767474;
+  color: #000;
 }
 .section-footer__forms .form-subscription .btn--submit:hover,
 .section-footer__forms .form-subscription .btn--submit:active {
@@ -625,10 +701,15 @@ a {
   justify-content: space-between;
   align-items: flex-end;
   margin-top: 44px;
+  /*    .socials {
+  } */
 }
 .section-footer__links .nav,
 .section-footer__links .credentials {
   padding-bottom: 8px;
+}
+.section-footer__links .active {
+  color: #f9804b;
 }
 .section-footer__links .credentials {
   margin-left: 0;
