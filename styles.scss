@@ -45,6 +45,7 @@ $transition: 0.2s;
 // Gray
 $color-primary-50: #fdfdff;
 $color-primary-100: #f1f3f2;
+$color-primary-200: #bdbdbd;
 $color-primary-300: #ababab;
 $color-primary-500: #767474;
 $color-primary-700: #333b41;
@@ -114,6 +115,7 @@ a {
 
 .subtitle {
   font-size: $fs-md;
+  line-height: 1.2;
 }
 
 .text {
@@ -131,6 +133,7 @@ a {
 .small-paragraph {
   font-size: $fs-xs;
   font-weight: $fw-light;
+  line-height: 1.2;
 }
 
 .ta-c {
@@ -165,14 +168,26 @@ a {
   outline: transparent;
   border-radius: $base * 6;
   color: $color-white;
-  /*   will-change: transform;
-  transition: background-color $transition linear;
-  -webkit-transform: translate3d(0, 0, 0); */
   //----------------------------------------------------FIX TRANSITION!
   cursor: pointer;
 
   &--square {
     border-radius: $base;
+  }
+
+  &--secondary {
+    color: $color-secondary-active;
+    background: $color-white;
+    border: 1px solid $color-secondary-active;
+
+    &--danger {
+      color: $color-danger;
+      border: 1px solid $color-danger;
+    }
+  }
+
+  &--size-sm {
+    min-width: $base * 32;
   }
 
   &:hover {
@@ -187,6 +202,17 @@ a {
     background: $color-primary-500;
     cursor: default;
   }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: rect(0 0 0 0);
+  border: 0;
 }
 // === / COMMON ===
 
@@ -482,7 +508,7 @@ a {
     bottom: 0;
 
     &--left {
-      left: 0;
+      left: -3%;
     }
 
     &--right {
@@ -490,11 +516,6 @@ a {
     }
   }
 }
-
-/*     left: 100%; */
-// transform: translateX((50%));
-//z-index: 1;
-
 // === / FAVORITE ===
 
 // === PICK-A-FRIEND ===
@@ -524,8 +545,10 @@ a {
   opacity: 0.9;
 
   .section-inner {
+    padding-top: $base * 17;
+
     .section-inner-wrapper {
-      padding: $base * 8 3vw $base * 12 4vw;
+      padding: $base * 8 3vw $base * 15 4vw;
       background: rgba(253, 253, 255, 0.5);
       border-radius: $base * 5;
     }
@@ -622,8 +645,10 @@ a {
 // === TESTIMONIALS ===
 .section-testimonials {
   position: relative;
+
   .section-inner {
   }
+
   .testimonials-list {
     @include list-null();
 
@@ -631,24 +656,48 @@ a {
     justify-content: space-between;
     margin-top: $base * 12;
 
+    .testimonials-item-wrapper {
+      border: 2px solid transparent;
+      border-radius: $base * 5;
+      background: linear-gradient(
+          315.75deg,
+          rgba(254, 189, 171, 0.74) 30.06%,
+          rgba(243, 169, 248, 0.66) 50.74%,
+          #e0d8f0 80.49%,
+          #eaf7fe 127.9%,
+          #eaf7fe 149.54%
+        ),
+        linear-gradient(
+          315.75deg,
+          rgba(254, 189, 171, 0.74) 30.06%,
+          rgba(243, 169, 248, 0.66) 50.74%,
+          #e0d8f0 80.49%,
+          #eaf7fe 127.9%,
+          #eaf7fe 149.54%
+        );
+    }
+
     &__item {
-      width: $base * 68;
+      width: $base * 67;
       padding: $base * 4;
       background-color: $color-primary-100;
-      border: 2px solid orange; // !!!!!!!!!!!!!!!!!!!!!!!!!1
-      border-radius: $base * 5;
+      border-radius: $base * 4.8;
 
       &-heading {
+        display: flex;
+        margin-bottom: $base * 3;
+
         img {
-          vertical-align: top;
+          display: block;
         }
 
-        &__name {
-          display: inline-block;
-        }
+        &__meta {
+          margin-left: $base * 3;
+          &-name {
+          }
 
-        &__credentials {
-          display: inline-block;
+          &-credentials {
+          }
         }
       }
     }
@@ -661,17 +710,13 @@ a {
   .slider {
     margin: $base * 5 auto $base * 8;
     -webkit-appearance: none;
+    // -moz-appearance: none;
     outline: none;
     height: $base * 2;
     width: $base * 150;
     background-color: $color-primary-50;
     border: 1px solid $color-primary-active-300;
     border-radius: $base;
-    background-image: linear-gradient(
-      var(--color-32),
-      var(--color-32)
-    );
-    background-repeat: no-repeat;
   }
 
   .slider::-webkit-slider-thumb {
@@ -679,6 +724,15 @@ a {
     height: $base * 1.2;
     width: $base * 30;
     border-radius: $base;
+    background-color: $color-primary-active-300;
+    cursor: pointer;
+  }
+
+  .slider::-moz-range-thumb {
+    height: $base * 1.2;
+    width: $base * 30;
+    border-radius: $base;
+    border: none;
     background-color: $color-primary-active-300;
     cursor: pointer;
   }
@@ -695,10 +749,16 @@ a {
       6px;
   }
 
+  .slider::-moz-range-thumb:hover {
+    box-shadow: lighten($color-primary-active-300, 30%) 0px 0px 0px
+      6px;
+  }
+
   .aside-image {
     position: absolute;
     bottom: 0;
     transform: translateY(20%);
+
     &--right {
       right: 0;
     }
@@ -709,7 +769,86 @@ a {
 
 // === FOOTER ===
 .section-footer {
+  background-color: $color-black;
+  color: $color-white;
+
   .section-inner {
+    padding-top: $base * 10;
+    padding-bottom: $base * 12;
+  }
+
+  &__forms {
+    display: flex;
+    justify-content: space-between;
+
+    &__left {
+      display: flex;
+      flex-direction: column;
+
+      .logo {
+        margin-bottom: $base * 17;
+      }
+
+      .btn {
+        width: 300px;
+        display: block;
+        text-align: center;
+      }
+    }
+
+    &__right {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-subscription {
+      margin-top: $base * 4;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      &__input {
+        box-sizing: border-box;
+        padding: $base * 3;
+        border: 1px solid $color-primary-active-300;
+        border-radius: $base;
+        outline: transparent;
+        font-size: $fs-sm;
+        font-weight: $fw-regular;
+        line-height: 1.4;
+        color: $color-primary-200;
+        background-color: inherit;
+      }
+
+      input:invalid {
+        border: 1px solid $color-danger;
+      }
+
+      input:invalid + input:hover,
+      input:invalid + input:active {
+        border: 1px solid $color-danger;
+        color: $color-danger;
+      }
+
+      .btn--submit {
+        margin-left: $base * 3;
+        padding: $base * 3;
+        font-weight: $fw-regular;
+        text-transform: none;
+        border: 1px solid $color-primary-active-500;
+        color: $color-primary-500;
+      }
+
+      .btn--submit:hover,
+      .btn--submit:active {
+        border: 1px solid $color-secondary-active;
+        background-color: $color-white;
+        color: $color-secondary-active;
+      }
+    }
+
+    .footer-links {
+    }
   }
 }
 // === / FOOTER ===
