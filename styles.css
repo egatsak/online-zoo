@@ -494,7 +494,7 @@ a {
   margin-bottom: 12px;
 }
 .section-testimonials .testimonials-list__item-heading img {
-  display: block;
+  object-fit: contain;
 }
 .section-testimonials .testimonials-list__item-heading__meta {
   margin-left: 12px;
@@ -592,8 +592,11 @@ a {
   font-size: 16px;
   font-weight: 400;
   line-height: 1.4;
-  color: #bdbdbd;
+  color: #fff;
   background-color: inherit;
+}
+.section-footer__forms .form-subscription input:empty {
+  color: #bdbdbd;
 }
 .section-footer__forms .form-subscription input:invalid {
   border: 1px solid #d31414;
@@ -616,6 +619,49 @@ a {
   border: 1px solid #4b9200;
   background-color: #fff;
   color: #4b9200;
+}
+.section-footer__links {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 44px;
+}
+.section-footer__links .nav,
+.section-footer__links .credentials {
+  padding-bottom: 8px;
+}
+.section-footer__links .credentials {
+  margin-left: 0;
+  font-weight: 300;
+}
+.section-footer__links .credentials * {
+  font-weight: 300;
+  text-align: right;
+  color: #ababab;
+}
+.section-footer__links .credentials * :not(:first-child) {
+  margin-top: 8px;
+}
+.section-footer__links .socials-wrapper {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+.section-footer__links .socials-wrapper__item-link {
+  display: inline-flex;
+  margin-top: 8px;
+  color: #fff;
+}
+.section-footer__links .socials-wrapper__item-link:hover {
+  color: #fe9013;
+}
+.section-footer__links .socials-wrapper__item-link:hover path {
+  fill: #fe9013;
+}
+.section-footer__links .socials-wrapper__item-link div {
+  margin: auto 0 auto 12px;
 }
 
 /*# sourceMappingURL=styles.css.map */

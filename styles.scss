@@ -688,7 +688,7 @@ a {
         margin-bottom: $base * 3;
 
         img {
-          display: block;
+          object-fit: contain;
         }
 
         &__meta {
@@ -816,8 +816,12 @@ a {
         font-size: $fs-sm;
         font-weight: $fw-regular;
         line-height: 1.4;
-        color: $color-primary-200;
+        color: $color-white;
         background-color: inherit;
+      }
+
+      input:empty {
+        color: $color-primary-200;
       }
 
       input:invalid {
@@ -846,8 +850,62 @@ a {
         color: $color-secondary-active;
       }
     }
+  }
 
-    .footer-links {
+  &__links {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: $base * 11;
+
+    .socials {
+    }
+
+    .nav,
+    .credentials {
+      padding-bottom: $base * 2;
+    }
+
+    .credentials {
+      margin-left: 0;
+      font-weight: $fw-light;
+
+      & * {
+        :not(:first-child) {
+          margin-top: $base * 2;
+        }
+
+        font-weight: $fw-light;
+        text-align: right;
+        color: $color-primary-300;
+      }
+    }
+
+    .socials-wrapper {
+      @include list-null();
+
+      display: flex;
+      flex-direction: column;
+
+      &__item {
+        &-link {
+          display: inline-flex;
+          margin-top: $base * 2;
+          color: $color-white;
+
+          &:hover {
+            color: $color-primary-active-300;
+          }
+
+          &:hover path {
+            fill: $color-primary-active-300;
+          }
+
+          div {
+            margin: auto 0 auto $base * 3;
+          }
+        }
+      }
     }
   }
 }
