@@ -1,0 +1,68 @@
+body {
+  line-height: 1.4;
+}
+
+.section-hero-image {
+  background-position: 50% 50%;
+}
+.section-hero-image .section-inner {
+  padding-top: 180px;
+  padding-bottom: 180px;
+}
+
+.section-pick-a-friend .section-inner {
+  padding-top: 32px;
+  padding-bottom: 180px;
+}
+.section-pick-a-friend .section-inner h3 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  color: #fff;
+}
+.section-pick-a-friend .section-inner .text-synopsis {
+  color: #fff;
+}
+.section-pick-a-friend .section-inner .heading-secondary {
+  color: #fe9013;
+  margin: 32px 0;
+}
+.section-pick-a-friend .section-inner .icon-block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.section-pick-a-friend .section-inner .icon-block__meta {
+  position: relative;
+}
+.section-pick-a-friend .section-inner .icon-block__meta::after {
+  position: absolute;
+  top: 0;
+  right: -15%;
+  /* transform: translate(-50%, -50%); */
+  font-size: 48px;
+  color: #000;
+  content: "x";
+}
+.section-pick-a-friend .section-inner .icon-block__meta-number {
+  margin-bottom: 8px;
+  font-size: 72px;
+  font-weight: 500;
+  color: #000;
+  line-height: 0.8;
+}
+.section-pick-a-friend .section-inner .icon-block svg {
+  margin-left: 80px;
+}
+.section-pick-a-friend .section-inner .input {
+  position: relative;
+}
+.section-pick-a-friend .section-inner .input::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: green;
+  content: "coocoo";
+  z-index: 3;
+}
+
+/*# sourceMappingURL=styles.css.map */

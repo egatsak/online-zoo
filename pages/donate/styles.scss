@@ -1,0 +1,143 @@
+// === VARIABLES ===
+$base: 4px;
+
+$fw-light: 300;
+$fw-regular: 400;
+$fw-medium: 500;
+$fw-bold: 700;
+
+$fs-xs: 15px;
+$fs-sm: 16px;
+$fs-md: 24px;
+$fs-lg: 36px;
+$fs-xl: 48px;
+$fs-xxl: 72px;
+
+$padding-vertical-xxl: $base * 45;
+$padding-vertical-xl: $base * 35;
+$padding-vertical-md: $base * 25;
+$padding-vertical-sm: $base * 15;
+$padding-vertical-xs: $base * 5;
+
+$transition: 0.2s;
+
+// Gray
+$color-primary-50: #fdfdff;
+$color-primary-100: #f1f3f2;
+$color-primary-200: #bdbdbd;
+$color-primary-300: #ababab;
+$color-primary-500: #767474;
+$color-primary-700: #333b41;
+
+// Red
+$color-danger: #d31414;
+
+// Orange
+$color-primary-active-300: #fe9013;
+$color-primary-active-500: #f9804b;
+$color-primary-active-700: #e47209;
+
+// Green
+$color-secondary-active: #4b9200;
+
+$color-orange-gradient: #fed290;
+$color-pink-gradient: #febdab;
+$color-yellow: #ffee2e;
+$color-black: #000;
+$color-white: #fff;
+
+$color-primary: $color-primary-700;
+
+// === / VARIABLES ===
+
+// === COMMON ===
+body {
+  line-height: 1.4;
+}
+// === / COMMON ===
+
+// === HEADER ===
+
+// === / HEADER ===
+
+// === HERO-IMAGE ===
+.section-hero-image {
+  background-position: 50% 50%;
+
+  .section-inner {
+    padding-top: $padding-vertical-xxl;
+    padding-bottom: $padding-vertical-xxl;
+  }
+}
+// === / HERO-IMAGE ===
+
+// === PICK-AND-FEEF-A-FRIEND ===
+.section-pick-a-friend {
+  .section-inner {
+    padding-top: $base * 8;
+    padding-bottom: $padding-vertical-xxl;
+
+    h3 {
+      margin-top: 0;
+      margin-bottom: $base * 3;
+      color: $color-white;
+    }
+
+    .text-synopsis {
+      color: $color-white;
+    }
+
+    .heading-secondary {
+      color: $color-primary-active-300;
+      margin: $base * 8 0;
+    }
+
+    .icon-block {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &__meta {
+        position: relative;
+
+        &::after {
+          position: absolute;
+          top: 0;
+          right: -15%;
+          /* transform: translate(-50%, -50%); */
+          font-size: $fs-xl;
+          color: $color-black;
+          content: "x";
+        }
+
+        &-number {
+          margin-bottom: $base * 2;
+          font-size: $fs-xxl;
+          font-weight: $fw-medium;
+          color: $color-black;
+          line-height: 0.8;
+        }
+      }
+
+      svg {
+        margin-left: $base * 20;
+      }
+    }
+
+    .input {
+      position: relative;
+      &--number {
+      }
+
+      &::after {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        color: green;
+        content: "coocoo";
+        z-index: 3;
+      }
+    }
+  }
+}
+// === / PICK-AND-FEEF-A-FRIEND ===
