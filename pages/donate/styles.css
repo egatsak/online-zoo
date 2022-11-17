@@ -26,10 +26,14 @@ body {
   color: #fe9013;
   margin: 32px 0;
 }
+.section-pick-a-friend .section-inner .subtitle {
+  margin-bottom: 100px;
+}
 .section-pick-a-friend .section-inner .icon-block {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 48px;
 }
 .section-pick-a-friend .section-inner .icon-block__meta {
   position: relative;
@@ -53,16 +57,113 @@ body {
 .section-pick-a-friend .section-inner .icon-block svg {
   margin-left: 80px;
 }
-.section-pick-a-friend .section-inner .input {
+.section-pick-a-friend .section-inner .donation legend {
+  margin-bottom: 8px;
+}
+.section-pick-a-friend .section-inner .donation__radiobuttons-amount {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  height: 26px;
+  margin-bottom: 112px;
+  background-color: #767474;
+  border: 12px solid #404950;
+}
+.section-pick-a-friend .section-inner .donation__radiobuttons-amount-radio {
+  position: relative;
+  width: 12px;
+  height: 12px;
+  border-radius: 100%;
+  background: yellow;
+  transform: translateY(-40%);
+  cursor: pointer;
+}
+.section-pick-a-friend .section-inner .donation__radiobuttons-amount-radio--active {
+  color: #fe9013;
+  border: 1px solid #fe9013;
+}
+.section-pick-a-friend .section-inner .donation__radiobuttons-amount-radio--active::before {
+  border: 1px solid #fe9013;
+}
+.section-pick-a-friend .section-inner .donation__radiobuttons-amount-radio::before {
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border-radius: 50%;
+  cursor: pointer;
+  content: "";
+  transform: translate(-35%, -35%);
+}
+.section-pick-a-friend .section-inner .donation__radiobuttons-amount-radio input {
+  display: none;
+}
+.section-pick-a-friend .section-inner .donation__radiobuttons-amount-radio .value {
+  position: absolute;
+  display: block;
+  margin-bottom: 0;
+  transform: translate(-40%, 100%);
+  font-weight: 500;
+}
+.section-pick-a-friend .section-inner .donation .input-wrapper {
+  position: relative;
+  width: 256px;
+}
+.section-pick-a-friend .section-inner .donation .input-wrapper::before {
+  position: absolute;
+  display: block;
+  top: 50%;
+  right: 5%;
+  transform: translateY(-40%);
+  content: url(../../assets/icons/icon-dollar.svg);
+}
+.section-pick-a-friend .section-inner .donation .input--number {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+.section-pick-a-friend .section-inner .donation .input--number:invalid {
+  border: 1px solid #d31414;
+  color: #d31414;
+}
+.section-pick-a-friend .section-inner .donation__radiobuttons-period-wrapper-outer {
+  display: flex;
+  justify-content: center;
+  margin: 28px 0;
+}
+.section-pick-a-friend .section-inner .donation__radiobuttons-period-wrapper-inner {
+  display: flex;
+  justify-content: space-between;
+}
+.section-pick-a-friend .section-inner .donation__radiobuttons-period__item {
+  display: block;
   position: relative;
 }
-.section-pick-a-friend .section-inner .input::after {
+.section-pick-a-friend .section-inner .donation__radiobuttons-period__item:not(:first-of-type) {
+  margin-left: 48px;
+}
+.section-pick-a-friend .section-inner .donation__radiobuttons-period__item::before {
+  display: block;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  color: green;
-  content: "coocoo";
-  z-index: 3;
+  top: 20%;
+  left: -35%;
+  width: 12px;
+  height: 12px;
+  border: 1px solid #fe9013;
+  border-radius: 100%;
+  background: transparent;
+  cursor: pointer;
+  content: "";
+}
+.section-pick-a-friend .section-inner .donation__radiobuttons-period__item input {
+  display: none;
+}
+.section-pick-a-friend .section-inner .btn-wrapper {
+  margin-top: 0;
+  margin-bottom: 28px;
 }
 
 /*# sourceMappingURL=styles.css.map */

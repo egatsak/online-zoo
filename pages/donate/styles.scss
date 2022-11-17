@@ -28,6 +28,7 @@ $color-primary-200: #bdbdbd;
 $color-primary-300: #ababab;
 $color-primary-500: #767474;
 $color-primary-700: #333b41;
+$color-primary-800: #404950;
 
 // Red
 $color-danger: #d31414;
@@ -92,10 +93,15 @@ body {
       margin: $base * 8 0;
     }
 
+    .subtitle {
+      margin-bottom: $base * 25;
+    }
+
     .icon-block {
       display: flex;
       align-items: center;
       justify-content: center;
+      margin-bottom: $base * 12;
 
       &__meta {
         position: relative;
@@ -124,19 +130,137 @@ body {
       }
     }
 
-    .input {
-      position: relative;
-      &--number {
+    .donation {
+      legend {
+        margin-bottom: $base * 2;
       }
 
-      &::after {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        color: green;
-        content: "coocoo";
-        z-index: 3;
+      &__radiobuttons-amount {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        height: $base * 6.5;
+        margin-bottom: $base * 28;
+        background-color: $color-primary-500;
+        border: $base * 3 solid $color-primary-800;
+
+        &-radio {
+          position: relative;
+          width: $base * 3;
+          height: $base * 3;
+          border-radius: 100%;
+          background: yellow;
+          transform: translateY(-40%);
+          cursor: pointer;
+
+          &--active {
+            color: $color-primary-active-300;
+            border: 1px solid $color-primary-active-300;
+
+            &::before {
+              border: 1px solid $color-primary-active-300;
+            }
+          }
+
+          &::before {
+            position: absolute;
+            display: block;
+            top: 0;
+            left: 0;
+            width: $base * 8;
+            height: $base * 8;
+            background: transparent;
+            border-radius: 50%;
+            cursor: pointer;
+            content: "";
+            transform: translate(-35%, -35%);
+          }
+
+          input {
+            display: none;
+          }
+
+          .value {
+            position: absolute;
+            display: block;
+            margin-bottom: 0;
+            transform: translate(-40%, 100%);
+            font-weight: $fw-medium;
+          }
+        }
       }
+
+      .input-wrapper {
+        position: relative;
+        width: $base * 64;
+
+        &::before {
+          position: absolute;
+          display: block;
+          top: 50%;
+          right: 5%;
+          transform: translateY(-40%);
+          content: url(../../assets/icons/icon-dollar.svg);
+        }
+      }
+
+      .wrapper-inner {
+      }
+
+      .input {
+        &--number {
+          position: relative;
+          display: block;
+          width: 100%;
+
+          &:invalid {
+            border: 1px solid $color-danger;
+            color: $color-danger;
+          }
+        }
+      }
+
+      &__radiobuttons-period-wrapper-outer {
+        display: flex;
+        justify-content: center;
+        margin: $base * 7 0;
+      }
+
+      &__radiobuttons-period-wrapper-inner {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      &__radiobuttons-period__item {
+        display: block;
+        position: relative;
+        &:not(:first-of-type) {
+          margin-left: $base * 12;
+        }
+
+        &::before {
+          display: block;
+          position: absolute;
+          top: 20%;
+          left: -35%;
+          width: $base * 3;
+          height: $base * 3;
+          border: 1px solid $color-primary-active-300;
+          border-radius: 100%;
+          background: transparent;
+          cursor: pointer;
+          content: "";
+        }
+
+        input {
+          display: none;
+        }
+      }
+    }
+
+    .btn-wrapper {
+      margin-top: 0;
+      margin-bottom: $base * 7;
     }
   }
 }
