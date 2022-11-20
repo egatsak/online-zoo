@@ -1,4 +1,15 @@
 // === VARIABLES ===
+$breakpoint-xxl-min: 1400px;
+$breakpoint-xl-max: $breakpoint-xxl-min - 1px;
+$breakpoint-xl-min: 1200px;
+$breakpoint-lg-max: $breakpoint-xl-min - 1px;
+$breakpoint-lg-min: 992px;
+$breakpoint-md-max: $breakpoint-lg-min - 1px;
+$breakpoint-md-min: 768px;
+$breakpoint-sm-max: $breakpoint-md-min - 1px;
+$breakpoint-sm-min: 576px;
+$breakpoint-xs-max: $breakpoint-sm-min - 1px;
+
 $base: 4px;
 
 $fw-light: 300;
@@ -64,37 +75,149 @@ body {
 // === HERO-IMAGE ===
 .section-hero-image {
   background-position: 50% 50%;
-
+  @media (max-width: $breakpoint-sm-max) {
+    background-position: 30% 30%;
+  }
   .section-inner {
-    padding-top: $padding-vertical-xxl;
-    padding-bottom: $padding-vertical-xxl;
+    padding-top: $base * 48;
+    padding-bottom: $base * 48;
+
+    @media (max-width: $breakpoint-sm-max) {
+      padding-top: $base * 42;
+      padding-bottom: $base * 42;
+    }
+
+    @media (max-width: $breakpoint-xs-max) {
+      padding-top: $padding-vertical-md;
+      padding-bottom: $base * 20;
+    }
   }
 }
 // === / HERO-IMAGE ===
 
-// === PICK-AND-FEEF-A-FRIEND ===
+// === PICK-AND-FEED-A-FRIEND ===
 .section-pick-a-friend {
   .section-inner {
-    padding-top: $base * 8;
+    padding-top: $base * 10;
     padding-bottom: $padding-vertical-xxl;
 
-    h3 {
+    @media (max-width: $breakpoint-lg-max) {
+      padding-bottom: $base * 8;
+    }
+
+    @media (max-width: $breakpoint-md-max) {
+      padding-top: $base * 7;
+      padding-left: $base * 7;
+      padding-right: $base * 7;
+    }
+
+    @media (max-width: $breakpoint-sm-max) {
+      padding-left: $base * 5;
+      padding-right: $base * 5;
+      padding-bottom: $base * 12;
+    }
+
+    @media (max-width: $breakpoint-xs-max) {
+      padding: $base * 8 $base * 2 $base * 5 $base * 2;
+    }
+
+    .heading-starter {
       margin-top: 0;
       margin-bottom: $base * 3;
       color: $color-white;
+
+      @media (max-width: $breakpoint-lg-max) {
+        margin-bottom: $base * 8;
+      }
+
+      @media (max-width: $breakpoint-sm-max) {
+        font-size: $fs-md;
+      }
+
+      @media (max-width: $breakpoint-sm-max) {
+        margin-bottom: $base * 5;
+      }
     }
 
     .text-synopsis {
       color: $color-white;
+
+      .accent {
+        font-weight: $fw-medium;
+      }
+
+      @media (max-width: $breakpoint-sm-max) {
+        display: block;
+      }
     }
 
     .heading-secondary {
       color: $color-primary-active-300;
-      margin: $base * 8 0;
+      margin-top: $base * 9;
+      margin-bottom: $base * 15;
+
+      @media (max-width: $breakpoint-lg-max) {
+        margin-bottom: $base * 10;
+      }
+
+      @media (max-width: $breakpoint-sm-max) {
+        margin-top: $base * 8;
+        margin-bottom: $base * 8;
+      }
     }
 
     .subtitle {
       margin-bottom: $base * 25;
+
+      @media (max-width: $breakpoint-sm-max) {
+        text-align: center;
+      }
+
+      @media (max-width: $breakpoint-xs-max) {
+        margin-bottom: $base * 9;
+        font-size: $fs-sm;
+        line-height: 1.4;
+      }
+    }
+
+    .section-inner-wrapper {
+      padding: $base * 10 $base * 20 $base * 15 $base * 20;
+
+      @media (max-width: $breakpoint-lg-max) {
+        padding: $base * 5 $base * 12 $base * 12 $base * 12;
+      }
+
+      @media (max-width: $breakpoint-sm-max) {
+        padding: $base * 6 $base * 7 $base * 6 $base * 8;
+      }
+
+      @media (max-width: $breakpoint-xs-max) {
+        padding: $base * 5 $base * 0.5 $base * 5 $base * 0.5;
+      }
+    }
+
+    .heading-primary {
+      margin-bottom: $base * 5;
+      font-size: $fs-xl;
+      color: $color-primary-active-300;
+
+      @media (max-width: $breakpoint-lg-max) {
+        margin-bottom: $base * 3;
+      }
+
+      @media (max-width: $breakpoint-sm-max) {
+        margin-bottom: $base * 5;
+      }
+
+      /* @media (max-width: $breakpoint-xs-max) {
+        font-size: $fs-lg;
+      } */
+
+      @media (max-width: $breakpoint-xs-max) {
+        margin-bottom: $base * 2;
+
+        font-size: $fs-md;
+      }
     }
 
     .icon-block {
@@ -103,17 +226,34 @@ body {
       justify-content: center;
       margin-bottom: $base * 12;
 
+      @media (max-width: $breakpoint-sm-max) {
+        margin-bottom: $base * 8;
+      }
+
+      @media (max-width: $breakpoint-xs-max) {
+        margin-bottom: 0;
+      }
+
       &__meta {
         position: relative;
+
+        @media (max-width: $breakpoint-xs-max) {
+          font-size: $base * 2.5;
+          min-width: $base * 25;
+        }
 
         &::after {
           position: absolute;
           top: 0;
           right: -15%;
-          /* transform: translate(-50%, -50%); */
           font-size: $fs-xl;
           color: $color-black;
           content: "x";
+
+          @media (max-width: $breakpoint-xs-max) {
+            top: 10%;
+            font-size: $fs-sm;
+          }
         }
 
         &-number {
@@ -122,17 +262,50 @@ body {
           font-weight: $fw-medium;
           color: $color-black;
           line-height: 0.8;
+
+          @media (max-width: $breakpoint-xs-max) {
+            font-size: $fs-lg;
+          }
         }
       }
 
-      svg {
+      .icon-wrapper {
         margin-left: $base * 20;
+
+        @media (max-width: $breakpoint-xs-max) {
+          width: $base * 38;
+          margin-left: $base * 10;
+
+          svg {
+            width: 100%;
+            height: 80%;
+          }
+        }
       }
     }
 
     .donation {
+      @media (max-width: $breakpoint-sm-max) {
+        margin-left: -$base * 9;
+        margin-right: -$base * 9;
+      }
+
+      @media (max-width: $breakpoint-xs-max) {
+        margin-left: 0;
+        margin-right: 0;
+
+        fieldset {
+          padding-left: 0;
+          padding-right: 0;
+        }
+      }
+
       legend {
         margin-bottom: $base * 2;
+
+        @media (max-width: $breakpoint-xs-max) {
+          margin-bottom: 0;
+        }
       }
 
       &__radiobuttons-amount {
@@ -140,18 +313,54 @@ body {
         justify-content: space-around;
         width: 100%;
         height: $base * 6.5;
-        margin-bottom: $base * 28;
+        margin-bottom: $base * 25;
         background-color: $color-primary-500;
         border: $base * 3 solid $color-primary-800;
+
+        @media (max-width: $breakpoint-lg-max) {
+          justify-content: space-between;
+        }
+
+        @media (max-width: $breakpoint-lg-max) {
+          padding: 0 $base * 2;
+        }
+
+        @media (max-width: $breakpoint-xs-max) {
+          height: $base * 3.5;
+          border: $base * 1.5 solid $color-primary-800;
+          /*     border-left-width: ; */
+          margin-bottom: $base * 12;
+        }
 
         &-radio {
           position: relative;
           width: $base * 3;
           height: $base * 3;
           border-radius: 100%;
-          background: yellow;
+          background: $color-yellow;
           transform: translateY(-40%);
           cursor: pointer;
+
+          @media (max-width: $breakpoint-lg-max) {
+            &--5000 {
+              display: none;
+            }
+          }
+
+          @media (max-width: $breakpoint-sm-max) {
+            &--2000 {
+              display: none;
+            }
+
+            &--1000 {
+              display: none;
+            }
+          }
+
+          @media (max-width: $breakpoint-xs-max) {
+            width: $base * 1.5;
+            height: $base * 1.5;
+          }
 
           &--active {
             color: $color-primary-active-300;
@@ -186,44 +395,64 @@ body {
             margin-bottom: 0;
             transform: translate(-40%, 100%);
             font-weight: $fw-medium;
+
+            @media (max-width: $breakpoint-xs-max) {
+              font-size: $base * 3;
+            }
           }
         }
       }
 
-      .input-wrapper {
-        position: relative;
+      &__input-wrapper {
+        display: flex;
         width: $base * 64;
 
-        &::before {
-          position: absolute;
-          display: block;
-          top: 50%;
-          right: 5%;
-          transform: translateY(-40%);
-          content: url(../../assets/icons/icon-dollar.svg);
+        @media (max-width: $breakpoint-sm-max) {
+          width: $base * 48;
+        }
+
+        &--number {
+          position: relative;
+          width: 100%;
+
+          @media (max-width: $breakpoint-sm-max) {
+            padding-left: $base * 2;
+          }
+
+          &:invalid {
+            border: 1px solid $color-danger;
+            color: $color-danger;
+
+            & + div {
+              color: $color-danger;
+            }
+          }
+        }
+
+        &--currency {
+          position: relative;
+          top: 5px;
+          right: 7%;
+          font-size: 24px;
+          color: $color-primary-500;
+
+          @media (max-width: $breakpoint-sm-max) {
+            right: 10%;
+          }
         }
       }
 
       .wrapper-inner {
       }
 
-      .input {
-        &--number {
-          position: relative;
-          display: block;
-          width: 100%;
-
-          &:invalid {
-            border: 1px solid $color-danger;
-            color: $color-danger;
-          }
-        }
-      }
-
       &__radiobuttons-period-wrapper-outer {
         display: flex;
         justify-content: center;
         margin: $base * 7 0;
+
+        @media (max-width: $breakpoint-xs-max) {
+          margin: $base * 5 0 $base * 4 0;
+        }
       }
 
       &__radiobuttons-period-wrapper-inner {
@@ -234,15 +463,17 @@ body {
       &__radiobuttons-period__item {
         display: block;
         position: relative;
+        cursor: pointer;
+
         &:not(:first-of-type) {
-          margin-left: $base * 12;
+          margin-left: $base * 25;
         }
 
         &::before {
           display: block;
           position: absolute;
-          top: 20%;
-          left: -35%;
+          top: 14%;
+          left: -30%;
           width: $base * 3;
           height: $base * 3;
           border: 1px solid $color-primary-active-300;
@@ -250,6 +481,24 @@ body {
           background: transparent;
           cursor: pointer;
           content: "";
+        }
+
+        &:not(:first-of-type)::before {
+          top: 14%;
+          left: -50%;
+        }
+
+        &--active {
+          &::before {
+            top: 22%;
+            background: $color-secondary-active;
+            border: none;
+          }
+
+          &:not(:first-of-type)::before {
+            top: 16%;
+            left: -40%;
+          }
         }
 
         input {
@@ -264,4 +513,4 @@ body {
     }
   }
 }
-// === / PICK-AND-FEEF-A-FRIEND ===
+// === / PICK-AND-FEED-A-FRIEND ===
