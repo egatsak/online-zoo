@@ -1,10 +1,10 @@
 # ONLINE ZOO
 
-## Desktop layout
+## Desktop, tablet & mobile layouts
 
-PLEASE don't forget to set viewport width to 1600px!
+Practicing Flex & Grid layout, SCSS, responsive & adaptive webpage building.
 
-Studying at RS School & practicing Flex & Grid layout, SCSS, responsive & adaptive webpage building (TBD).
+Fully responsive site with viewport width from 320px till 2560px.
 
 [Deploy link at Github Pages](https://egatsak.github.io/online-zoo)
 
