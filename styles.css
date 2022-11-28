@@ -167,7 +167,7 @@ fieldset {
   padding: 12px;
   font-weight: 400;
   text-transform: none;
-  border: 1px solid #f9804b;
+  border: 1px solid #767474;
   color: #000;
 }
 .btn--submit:hover, .btn--submit:active {
@@ -206,22 +206,18 @@ fieldset {
   border: 0;
 }
 
-/* .background-darken {
-  display: none;
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 100vh;
-  height: 100vh;
-  z-index: 1;
-  background: $color-primary-700;
-  opacity: 0.5;
-} */
 .section-header {
   position: relative;
   z-index: 1;
   background-color: #000;
   color: #fff;
+}
+@media (max-width: 767px) {
+  .section-header {
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+  }
 }
 .section-header .section-inner {
   padding-top: 16px;
@@ -380,6 +376,11 @@ fieldset {
   background: url(./assets/images/GiantPanda.jpg) no-repeat 50% 100%;
   background-size: cover;
 }
+@media (max-width: 767px) {
+  .section-hero-image {
+    padding-top: 38px;
+  }
+}
 .section-hero-image .section-inner {
   padding-top: 80px;
   padding-bottom: 100px;
@@ -398,7 +399,7 @@ fieldset {
 }
 @media (max-width: 767px) {
   .section-hero-image .section-inner {
-    padding-top: 40px;
+    padding-top: 44px;
   }
 }
 .section-hero-image .hero-heading-wrapper {
@@ -565,7 +566,7 @@ fieldset {
     padding-right: 32px;
   }
 }
-@media (max-width: 400px) {
+@media (max-width: 390px) {
   .section-backstage__content {
     padding-right: 8px;
   }
@@ -586,7 +587,7 @@ fieldset {
     display: block;
     transform: translateX(100%);
     top: 5%;
-    right: 15vw;
+    right: 14vw;
   }
   .section-backstage .aside-image img {
     width: 65%;
@@ -597,8 +598,8 @@ fieldset {
   .section-backstage .aside-image {
     display: block;
     transform: translateX(100%);
-    top: 5%;
-    right: 10vw;
+    top: 10%;
+    right: 9vw;
   }
   .section-backstage .aside-image img {
     width: 40%;
@@ -721,14 +722,6 @@ fieldset {
 .section-favorite .slider-favorite__item {
   position: relative;
   cursor: pointer;
-  /*      
-  .img-wrapper {
-    border-radius: $base;
-    width: inherit;
-    max-width: 100%;
-    height: 100%;
-    background: url(./assets/images/Rectangle-5-1.jpg) no-repeat;
-  } */
 }
 .section-favorite .slider-favorite__item:hover {
   background: #333b41;
@@ -1365,22 +1358,19 @@ fieldset {
 }
 .section-footer__forms .form-subscription__input {
   border: 1px solid #fe9013;
-  border-radius: 4px;
   font-size: 16px;
   font-weight: 400;
   line-height: 1.4;
   color: #fff;
 }
-.section-footer__forms .form-subscription input:invalid + input:hover,
-.section-footer__forms .form-subscription input:invalid + input:active {
+.section-footer__forms .form-subscription__input:invalid:not(:focus):not(:placeholder-shown) {
+  border: 1px solid red;
+}
+.section-footer__forms .form-subscription__input:placeholder-shown + input:hover, .section-footer__forms .form-subscription__input:invalid:focus + input:hover, .section-footer__forms .form-subscription__input:invalid:not(:focus):not(:placeholder-shown) + input, .section-footer__forms .form-subscription__input:invalid:not(:focus):not(:placeholder-shown) + input:hover,
+.section-footer__forms .form-subscription__input .section-footer__forms .form-subscription:invalid {
   border: 1px solid #d31414;
   color: #d31414;
   cursor: default;
-}
-.section-footer__forms .form-subscription input:valid + input:hover,
-.section-footer__forms .form-subscription input:valid + input:active {
-  color: #4b9200;
-  border: 1px solid #4b9200;
 }
 .section-footer__links {
   display: flex;

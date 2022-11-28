@@ -263,7 +263,7 @@ fieldset {
     padding: $base * 3;
     font-weight: $fw-regular;
     text-transform: none;
-    border: 1px solid $color-primary-active-500;
+    border: 1px solid $color-primary-500;
     color: $color-black;
 
     &:hover,
@@ -308,17 +308,6 @@ fieldset {
   border: 0;
 }
 
-/* .background-darken {
-  display: none;
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 100vh;
-  height: 100vh;
-  z-index: 1;
-  background: $color-primary-700;
-  opacity: 0.5;
-} */
 // === / COMMON ===
 
 // === HEADER ===
@@ -327,6 +316,12 @@ fieldset {
   z-index: 1;
   background-color: $color-black;
   color: $color-white;
+
+  @media (max-width: $breakpoint-sm-max) {
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+  }
 
   .section-inner {
     padding-top: $base * 4;
@@ -504,6 +499,10 @@ fieldset {
   background: url(./assets/images/GiantPanda.jpg) no-repeat 50% 100%;
   background-size: cover;
 
+  @media (max-width: $breakpoint-sm-max) {
+    padding-top: $base * 9.5;
+  }
+
   .section-inner {
     padding-top: $base * 20;
     padding-bottom: $padding-vertical-md;
@@ -519,7 +518,7 @@ fieldset {
     }
 
     @media (max-width: $breakpoint-sm-max) {
-      padding-top: $base * 10;
+      padding-top: $base * 11;
     }
   }
   .hero-heading-wrapper {
@@ -682,7 +681,7 @@ fieldset {
       padding-right: $base * 8;
     }
 
-    @media (max-width: 400px) {
+    @media (max-width: 390px) {
       padding-right: $base * 2;
     }
   }
@@ -701,7 +700,7 @@ fieldset {
       display: block;
       transform: translateX(100%);
       top: 5%;
-      right: 15vw;
+      right: 14vw;
 
       img {
         width: 65%;
@@ -712,8 +711,8 @@ fieldset {
     @media (max-width: $breakpoint-xs-max) {
       display: block;
       transform: translateX(100%);
-      top: 5%;
-      right: 10vw;
+      top: 10%;
+      right: 9vw;
 
       img {
         width: 40%;
@@ -795,12 +794,10 @@ fieldset {
     @include list-null();
 
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax($base * 70, 1fr));
     grid-template-rows: 1fr 1fr;
     grid-gap: 3%;
     justify-items: center;
-
-    //=========================================== FIX overflow!
 
     @media (max-width: $breakpoint-xl-max) {
       row-gap: $base * 20;
@@ -808,7 +805,10 @@ fieldset {
     }
 
     @media (max-width: $breakpoint-md-max) {
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      grid-template-columns: repeat(
+        auto-fill,
+        minmax($base * 70, 1fr)
+      );
       grid-template-rows: 1fr 1fr;
       column-gap: 4%;
 
@@ -851,14 +851,6 @@ fieldset {
           opacity: 0.5;
         }
       }
-      /*      
-      .img-wrapper {
-        border-radius: $base;
-        width: inherit;
-        max-width: 100%;
-        height: 100%;
-        background: url(./assets/images/Rectangle-5-1.jpg) no-repeat;
-      } */
 
       img {
         max-width: 100%;
@@ -1544,27 +1536,28 @@ fieldset {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      $parent: &;
 
       &__input {
         border: 1px solid $color-primary-active-300;
-        border-radius: $base;
         font-size: $fs-sm;
         font-weight: $fw-regular;
         line-height: 1.4;
         color: $color-white;
-      }
 
-      input:invalid + input:hover,
-      input:invalid + input:active {
-        border: 1px solid $color-danger;
-        color: $color-danger;
-        cursor: default;
-      }
+        &:invalid:not(:focus):not(:placeholder-shown) {
+          border: 1px solid red;
+        }
 
-      input:valid + input:hover,
-      input:valid + input:active {
-        color: $color-secondary-active;
-        border: 1px solid $color-secondary-active;
+        &:placeholder-shown + input:hover,
+        &:invalid:focus + input:hover,
+        &:invalid:not(:focus):not(:placeholder-shown) + input,
+        &:invalid:not(:focus):not(:placeholder-shown) + input:hover,
+        #{$parent}:invalid {
+          border: 1px solid $color-danger;
+          color: $color-danger;
+          cursor: default;
+        }
       }
     }
   }
@@ -1669,7 +1662,7 @@ fieldset {
         top: 0;
         right: $base * 6;
       }
-      /////////////////////////////////////////////////////// TODO
+
       @media (max-width: $breakpoint-xs-max) {
         flex-direction: row;
         justify-content: space-around;
