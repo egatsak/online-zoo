@@ -816,6 +816,7 @@ fieldset {
 .section-favorite .aside-image {
   position: absolute;
   bottom: 0;
+  z-index: -1;
 }
 .section-favorite .aside-image img {
   vertical-align: bottom;
@@ -831,12 +832,15 @@ fieldset {
   }
   .section-favorite .aside-image--left img {
     width: 60%;
-    /*    height: 60%; */
   }
 }
 .section-favorite .aside-image--right {
-  /*    bottom: -3%; */
   right: 0;
+}
+@media (max-width: 1600px) {
+  .section-favorite .aside-image--right {
+    bottom: -3%;
+  }
 }
 @media (max-width: 1399px) {
   .section-favorite .aside-image--right {

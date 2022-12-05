@@ -944,7 +944,7 @@ fieldset {
   .aside-image {
     position: absolute;
     bottom: 0;
-
+    z-index: -1;
     img {
       vertical-align: bottom;
     }
@@ -959,14 +959,16 @@ fieldset {
 
         img {
           width: 60%;
-          /*    height: 60%; */
         }
       }
     }
 
     &--right {
-      /*    bottom: -3%; */
       right: 0;
+
+      @media (max-width: 1600px) {
+        bottom: -3%;
+      }
 
       @media (max-width: $breakpoint-xl-max) {
         text-align: end;
