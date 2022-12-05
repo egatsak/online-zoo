@@ -75,9 +75,21 @@ body {
 // === HERO-IMAGE ===
 .section-hero-image {
   background-position: 50% 50%;
-  @media (max-width: $breakpoint-sm-max) {
+  background-size: cover;
+
+  @media (max-width: $breakpoint-md-max) {
     background-position: 30% 30%;
+    background-size: 130%;
   }
+  @media (max-width: $breakpoint-sm-max) {
+    background-position: 30% 40%;
+    background-size: 140%;
+  }
+  @media (max-width: $breakpoint-sm-max) {
+    background-position: 30% 50%;
+    background-size: 160%;
+  }
+
   .section-inner {
     padding-top: $base * 48;
     padding-bottom: $base * 48;
