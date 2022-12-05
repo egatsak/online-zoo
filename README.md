@@ -2,6 +2,7 @@
 
 ## Desktop, tablet & mobile layouts
 
+
 [Deploy link at Github Pages](https://egatsak.github.io/online-zoo)
 
 Practicing Flex & Grid layout, SCSS, responsive & adaptive webpage building.
