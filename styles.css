@@ -88,9 +88,6 @@ fieldset {
   letter-spacing: -0.2px;
 }
 
-/* .section-outer {
-}
- */
 .section-inner {
   max-width: 1160px;
   margin: 0 auto;
@@ -124,7 +121,7 @@ fieldset {
   line-height: 1.4;
   position: relative;
   box-sizing: border-box;
-  min-width: 300px;
+  width: 300px;
   padding: 16px 0;
   background: linear-gradient(113.96deg, #f9804b 1.49%, #fe9013 101.44%);
   border: 1px solid transparent;
@@ -778,10 +775,9 @@ fieldset {
 }
 .section-favorite .btn-favorite {
   position: absolute;
-  display: block;
+  top: 50%;
   width: 60px;
   height: 60px;
-  top: 50%;
   border-radius: 100%;
   background: url(./assets/icons/arrow_elips_2.svg) no-repeat 50% 50%;
 }
@@ -1101,17 +1097,26 @@ fieldset {
     padding-bottom: 60px;
   }
 }
+.section-testimonials .testimonials-list-wrapper {
+  margin-top: 48px;
+  overflow: hidden;
+}
+@media (max-width: 1199px) {
+  .section-testimonials .testimonials-list-wrapper {
+    max-width: 920px;
+    margin: 48px auto 0;
+  }
+}
 .section-testimonials .testimonials-list {
   margin: 0;
   padding: 0;
   list-style: none;
   display: flex;
   justify-content: space-between;
-  margin-top: 48px;
 }
 @media (max-width: 1199px) {
   .section-testimonials .testimonials-list {
-    justify-content: space-evenly;
+    justify-content: space-between;
   }
 }
 @media (max-width: 991px) {
@@ -1132,9 +1137,12 @@ fieldset {
   border-radius: 20px;
   background: linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30.06%, rgba(243, 169, 248, 0.66) 50.74%, #e0d8f0 80.49%, #eaf7fe 127.9%, #eaf7fe 149.54%), linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30.06%, rgba(243, 169, 248, 0.66) 50.74%, #e0d8f0 80.49%, #eaf7fe 127.9%, #eaf7fe 149.54%);
 }
+.section-testimonials .testimonials-list .testimonials-item-wrapper + .testimonials-item-wrapper {
+  margin-left: 8px;
+}
 @media (max-width: 1199px) {
-  .section-testimonials .testimonials-list .testimonials-item-wrapper:last-child {
-    display: none;
+  .section-testimonials .testimonials-list .testimonials-item-wrapper + .testimonials-item-wrapper {
+    margin-left: 34px;
   }
 }
 @media (max-width: 991px) {
@@ -1143,6 +1151,10 @@ fieldset {
   }
   .section-testimonials .testimonials-list .testimonials-item-wrapper + .testimonials-item-wrapper {
     margin-top: 16px;
+    margin-left: 0;
+  }
+  .section-testimonials .testimonials-list .testimonials-item-wrapper:nth-child(-n+7) {
+    display: none;
   }
 }
 .section-testimonials .testimonials-list__item {
