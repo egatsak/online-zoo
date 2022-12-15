@@ -410,11 +410,6 @@ fieldset {
 }
 
 .nav {
-  /*   .section-header & {
-    @media (max-width: $breakpoint-sm-max) {
-      display: none;
-    }
-  } */
 }
 
 .nav-wrapper {
@@ -497,10 +492,6 @@ fieldset {
     }
   }
 }
-///---------------------------------------------------------to delete
-/* .active {
-  color: $color-primary-active-500;
-} */
 
 .credentials {
   margin-left: auto;
@@ -1352,27 +1343,8 @@ fieldset {
       max-width: $base * 230;
       margin: $base * 12 auto 0;
     }
-  }
-
-  .testimonials-list {
-    @include list-null();
-
-    display: flex;
-    justify-content: space-between;
-
-    @media (max-width: $breakpoint-lg-max) {
-      justify-content: space-between;
-    }
-
-    @media (max-width: $breakpoint-md-max) {
-      flex-direction: column;
-      margin-top: $base * 7;
-      margin-bottom: $base * 10;
-    }
-
-    @media (max-width: $breakpoint-xs-max) {
-      margin-top: $base * 5;
-      margin-bottom: $base * 7;
+    @media (max-width: $breakpoint-sm-max) {
+      margin-top: $base * 2;
     }
 
     .testimonials-item-wrapper {
@@ -1419,44 +1391,67 @@ fieldset {
           display: none;
         }
       }
+
+      .testimonials-list__item {
+        &-text {
+          // TODO! -----------------------------------------------------------------------fix using JS
+          @media (max-width: $breakpoint-md-max) {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -moz-box;
+            display: -webkit-box;
+            line-clamp: 2;
+            box-orient: vertical;
+            -moz-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+          }
+        }
+      }
     }
 
-    &__item {
-      width: $base * 70;
-      padding: $base * 4;
-      background-color: $color-primary-100;
-      border-radius: $base * 4.8;
+    .testimonials-list {
+      @include list-null();
+
+      display: flex;
+      justify-content: space-between;
+
+      @media (max-width: $breakpoint-lg-max) {
+        justify-content: space-between;
+      }
+
+      @media (max-width: $breakpoint-md-max) {
+        flex-direction: column;
+        margin-bottom: $base * 10;
+      }
 
       @media (max-width: $breakpoint-xs-max) {
-        min-width: $base * 68;
-        padding: $base * 3;
+        margin-bottom: $base * 7;
       }
 
-      &-heading {
-        display: flex;
-        margin-bottom: $base * 3;
+      &__item {
+        width: $base * 70;
+        padding: $base * 4;
+        background-color: $color-primary-100;
+        border-radius: $base * 4.8;
+        cursor: pointer;
 
-        img {
-          object-fit: contain;
+        @media (max-width: $breakpoint-xs-max) {
+          min-width: $base * 68;
+          padding: $base * 3;
         }
 
-        &__meta {
-          margin-left: $base * 3;
-        }
-      }
+        &-heading {
+          display: flex;
+          margin-bottom: $base * 3;
 
-      &-text {
-        // TODO! -----------------------------------------------------------------------fix using JS
-        @media (max-width: $breakpoint-md-max) {
-          overflow: hidden;
-          text-overflow: ellipsis;
-          display: -moz-box;
-          display: -webkit-box;
-          line-clamp: 2;
-          box-orient: vertical;
-          -moz-box-orient: vertical;
-          -webkit-line-clamp: 2;
-          -webkit-box-orient: vertical;
+          img {
+            object-fit: contain;
+          }
+
+          &__meta {
+            margin-left: $base * 3;
+          }
         }
       }
     }
@@ -1566,6 +1561,100 @@ fieldset {
         img {
           width: 30%;
           height: 30%;
+        }
+      }
+    }
+  }
+
+  .modal {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 2;
+    pointer-events: none;
+    background-color: rgba(0, 0, 0, 0.4);
+    transition: $transition;
+
+    &--active {
+      display: flex;
+      pointer-events: all;
+    }
+
+    .card-popup-wrapper {
+      position: relative;
+      padding: $base * 4 $base * 8 $base * 4 $base * 4;
+      z-index: 100;
+      background-color: $color-white;
+
+      .popup-close-btn {
+        position: absolute;
+        top: $base * 3;
+        right: $base * 2;
+        cursor: pointer;
+      }
+
+      .popup-item-wrapper {
+        @include list-null();
+
+        width: $base * 68;
+        border: 2px solid transparent;
+        border-radius: $base * 5;
+        background: linear-gradient(
+            315.75deg,
+            rgba(254, 189, 171, 0.74) 30.06%,
+            rgba(243, 169, 248, 0.66) 50.74%,
+            #e0d8f0 80.49%,
+            #eaf7fe 127.9%,
+            #eaf7fe 149.54%
+          ),
+          linear-gradient(
+            315.75deg,
+            rgba(254, 189, 171, 0.74) 30.06%,
+            rgba(243, 169, 248, 0.66) 50.74%,
+            #e0d8f0 80.49%,
+            #eaf7fe 127.9%,
+            #eaf7fe 149.54%
+          );
+
+        .testimonials-list__item {
+          padding: $base * 4;
+          background-color: $color-primary-100;
+          border-radius: $base * 4.8;
+          width: $base * 67;
+
+          @media (max-width: $breakpoint-xs-max) {
+            width: $base * 67;
+            padding: $base * 3;
+          }
+
+          &-heading {
+            display: flex;
+            margin-bottom: $base * 3;
+
+            img {
+              object-fit: contain;
+            }
+
+            &__meta {
+              margin-left: $base * 3;
+            }
+          }
+        }
+      }
+      .popup__item {
+        padding: $base * 4;
+        background-color: $color-primary-100;
+        border-radius: $base * 4.8;
+        width: $base * 68;
+
+        @media (max-width: $breakpoint-xs-max) {
+          width: $base * 67;
+          padding: $base * 3;
         }
       }
     }
