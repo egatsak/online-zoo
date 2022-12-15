@@ -1,5 +1,32 @@
 const viewportWidth = window.innerWidth;
 
+const header = document.querySelector(".section-header");
+const headerInnerSection = document.querySelector(
+  ".section-header .section-inner"
+);
+const headerNavbar = document.querySelector(
+  ".main-navigation__inner-wrap"
+);
+
+headerInnerSection.addEventListener("click", (e) => {
+  e.stopPropagation();
+});
+
+headerNavbar.addEventListener("click", (e) => {
+  e.stopPropagation();
+});
+
+document
+  .querySelector(".btn-burger")
+  .addEventListener("click", () => {
+    header.classList.toggle("section-header--active-nav");
+  });
+
+document.body.addEventListener("click", () => {
+  header.classList.remove("section-header--active-nav");
+});
+/////////////////////////////////////////////////////////////////////
+
 const randomIntegerFrom1 = randomInteger(1);
 const petSlides = document.querySelectorAll(".slider-favorite__item");
 

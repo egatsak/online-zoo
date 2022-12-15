@@ -316,8 +316,22 @@ fieldset {
 
   @media (max-width: $breakpoint-sm-max) {
     position: fixed;
-    width: 100%;
-    z-index: 10;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 100;
+  }
+
+  &::before {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    content: "";
+    z-index: 15;
   }
 
   .section-inner {
@@ -334,6 +348,25 @@ fieldset {
 .main-navigation {
   display: flex;
   align-items: center;
+}
+
+.main-navigation__inner-wrap {
+  display: flex;
+  align-items: center;
+  margin-left: $base * 16;
+  flex-grow: 1;
+
+  @media (max-width: $breakpoint-sm-max) {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    display: none;
+    margin-left: 0;
+    padding: $base * 8 $base * 5 $base * 8;
+    z-index: 20;
+    background-color: $color-white;
+  }
 }
 
 .logo {
@@ -377,13 +410,11 @@ fieldset {
 }
 
 .nav {
-  margin-left: $base * 16;
-
-  .section-header & {
+  /*   .section-header & {
     @media (max-width: $breakpoint-sm-max) {
       display: none;
     }
-  }
+  } */
 }
 
 .nav-wrapper {
@@ -391,6 +422,12 @@ fieldset {
 
   display: flex;
   align-items: center;
+
+  @media (max-width: $breakpoint-sm-max) {
+    .section-header & {
+      flex-direction: column;
+    }
+  }
 
   &__item {
     & + & {
@@ -415,13 +452,21 @@ fieldset {
       text-decoration: none;
       transition: color $transition ease-in-out;
 
-      &:hover {
-        color: $color-primary-active-500;
+      @media (max-width: $breakpoint-sm-max) {
+        .section-header & {
+          color: $color-primary-700;
+          font-weight: $fw-regular;
+        }
+
+        &:hover {
+          color: $color-primary-active-500;
+        }
       }
 
-      /*       &--active {
+      &--active {
         color: $color-primary-active-500;
-      } */
+        pointer-events: none;
+      }
     }
   }
 }
@@ -453,10 +498,9 @@ fieldset {
   }
 }
 ///---------------------------------------------------------to delete
-.active {
+/* .active {
   color: $color-primary-active-500;
-  pointer-events: none;
-}
+} */
 
 .credentials {
   margin-left: auto;
@@ -481,10 +525,65 @@ fieldset {
       }
     }
   }
+}
 
-  .section-header & {
-    @media (max-width: $breakpoint-sm-max) {
-      display: none;
+.section-header--active-nav {
+  background-color: $color-white;
+  padding-top: $base * 2;
+
+  &::before {
+    display: block;
+  }
+
+  .logo {
+    &__link {
+      border: 1px solid $color-primary-active-500;
+      color: $color-primary-active-500;
+
+      &::before {
+        content: url(./assets/icons/bamboo-orange.svg);
+      }
+    }
+  }
+
+  .btn-burger {
+    padding: $base;
+    border: 1px solid $color-primary-active-500;
+    &__line {
+      background-color: $color-primary-active-500;
+    }
+  }
+
+  .main-navigation__inner-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    .nav-wrapper {
+      align-items: flex-start;
+
+      &__item {
+        & + .nav-wrapper__item {
+          @media (max-width: $breakpoint-sm-max) {
+            margin-left: 0;
+            padding-top: $base * 3;
+          }
+        }
+      }
+    }
+  }
+
+  .credentials {
+    margin-left: 0;
+    padding-top: $base * 3;
+
+    &__item-link {
+      font-weight: $fw-regular;
+      color: $color-primary-700;
+
+      &:hover {
+        color: $color-primary-active-500;
+      }
     }
   }
 }
@@ -1132,93 +1231,94 @@ fieldset {
       cursor: pointer;
     }
   }
-}
 
-.list-wrapper {
-  display: flex;
-  justify-content: center;
-  margin-top: $base * 10;
-
-  @media (max-width: $breakpoint-md-max) {
-    margin-top: $base * 5;
-  }
-}
-
-.how-it-works-list {
-  @include list-null();
-  ///////////////////////////////////////!!!!!!!!! px
-  @media (max-width: 639px) {
+  .list-wrapper {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    margin-top: $base * 10;
+
+    @media (max-width: $breakpoint-md-max) {
+      margin-top: $base * 5;
+    }
   }
 
-  &__item {
-    position: relative;
-    width: $base * 42;
-    display: inline-block;
-    vertical-align: top;
-
+  .how-it-works-list {
+    @include list-null();
+    ///////////////////////////////////////!!!!!!!!! px
     @media (max-width: 639px) {
-      margin-bottom: $base * 7;
-
-      &:first-child {
-        margin-bottom: $base * 12;
-      }
-    }
-
-    &:not(:first-child) {
-      margin-left: $base * 32;
-
-      @media (max-width: $breakpoint-md-max) {
-        margin-left: $base * 10;
-      }
-
-      @media (max-width: 639px) {
-        margin-left: 0;
-      }
-    }
-
-    &:not(:first-child)::before {
-      position: absolute;
-      top: 28%;
-      left: -40%;
-      transform: translateX(-50%);
-      content: url(./assets/icons/arrow.svg);
-
-      @media (max-width: $breakpoint-md-max) {
-        content: url(./assets/icons/icon-arrow-accent.svg);
-        top: 0;
-        left: 0;
-        transform: translate(-75%, -50%);
-      }
-
-      @media (max-width: 639px) {
-        /*  content: url(./assets/icons/icon-arrow-accent.svg); */
-        top: -25%;
-        left: 100%;
-        transform: translate(-35%, 0) rotate(85deg);
-      }
-    }
-
-    &-icon {
-      background-color: $color-white;
-      height: $base * 42;
       display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid $color-primary-active-500;
-      border-radius: $base;
+      flex-direction: column;
     }
 
-    &-text {
-      margin-top: $base * 7;
+    &__item {
+      position: relative;
+      width: $base * 42;
+      display: inline-block;
+      vertical-align: top;
 
       @media (max-width: 639px) {
-        margin-top: $base * 2;
+        margin-bottom: $base * 7;
+
+        &:first-child {
+          margin-bottom: $base * 12;
+        }
+      }
+
+      &:not(:first-child) {
+        margin-left: $base * 32;
+
+        @media (max-width: $breakpoint-md-max) {
+          margin-left: $base * 10;
+        }
+
+        @media (max-width: 639px) {
+          margin-left: 0;
+        }
+      }
+
+      &:not(:first-child)::before {
+        position: absolute;
+        top: 28%;
+        left: -40%;
+        transform: translateX(-50%);
+        content: url(./assets/icons/arrow.svg);
+
+        @media (max-width: $breakpoint-md-max) {
+          content: url(./assets/icons/icon-arrow-accent.svg);
+          top: 0;
+          left: 0;
+          transform: translate(-75%, -50%);
+        }
+
+        @media (max-width: 639px) {
+          /*  content: url(./assets/icons/icon-arrow-accent.svg); */
+          top: -25%;
+          left: 100%;
+          transform: translate(-35%, 0) rotate(85deg);
+        }
+      }
+
+      &-icon {
+        background-color: $color-white;
+        height: $base * 42;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid $color-primary-active-500;
+        border-radius: $base;
+      }
+
+      &-text {
+        margin-top: $base * 7;
+
+        @media (max-width: 639px) {
+          margin-top: $base * 2;
+        }
       }
     }
   }
 }
+
 // === / PICK-A-FRIEND ===
 
 // === TESTIMONIALS ===

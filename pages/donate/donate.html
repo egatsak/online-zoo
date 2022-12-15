@@ -21,48 +21,44 @@
             <div class="main-navigation">
                 <div class="logo">
                     <h1 class='visually-hidden'>PetStory Online</h1>
-                    <a class="logo__link" href="../../index.html" aria-label="PetStory online">
+                    <a class="logo__link" href="#" aria-label="PetStory online">
                         <span>PetStory online</span>
                     </a>
-                </div>
-                <nav class="nav">
-                    <ul class="nav-wrapper">
-                        <li class="nav-wrapper__item">
-                            <a id='about' href="../../index.html" class="nav-wrapper__item-link"
-                                aria-label="About">About</a>
-                        </li>
-                        <li class="nav-wrapper__item">
-                            <a href="#" class="nav-wrapper__item-link"
-                                onclick="document.getElementById('about').classList.remove('active');"
-                                aria-label="Map">Map</a>
-                        </li>
-                        <li class="nav-wrapper__item">
-                            <a href="#" class="nav-wrapper__item-link"
-                                onclick="document.getElementById('about').classList.remove('active');"
-                                aria-label="Zoos">Zoos</a>
-                        </li>
-                        <li class="nav-wrapper__item">
-                            <a href="#" class="nav-wrapper__item-link nav-wrapper__item-link-link--active active"
-                                onclick="document.getElementById('about').classList.remove('active');"
-                                aria-label="Donate">Donate</a>
-                        </li>
-                        <li class="nav-wrapper__item">
-                            <a href="#" class="nav-wrapper__item-link"
-                                onclick="document.getElementById('about').classList.remove('active');"
-                                aria-label="Contact us">Contact us</a>
-                        </li>
-
-                    </ul>
-                </nav>
-                <div class="credentials">
-                    <a href="https://www.figma.com/file/ypzT9idgAILaSRVRmDAJxn/online-zoo-3-weeks" target='_blank'
-                        class="credentials__item-link" aria-label="Designed by">Designed by ©</a>
                 </div>
                 <button class='btn-burger' aria-label="Toggle navigation">
                     <span class="btn-burger__line"></span>
                     <span class="btn-burger__line"></span>
                     <span class="btn-burger__line"></span>
                 </button>
+                <div class="main-navigation__inner-wrap">
+                    <nav class="nav">
+                        <ul class="nav-wrapper">
+                            <li class="nav-wrapper__item">
+                                <a href="../../index.html" id='about' class="nav-wrapper__item-link"
+                                    aria-label="About">About</a>
+                            </li>
+                            <li class="nav-wrapper__item">
+                                <a href="#" class="nav-wrapper__item-link" aria-label="Map">Map</a>
+                            </li>
+                            <li class="nav-wrapper__item">
+                                <a href="#" class="nav-wrapper__item-link" aria-label="Zoos">Zoos</a>
+                            </li>
+                            <li class="nav-wrapper__item">
+                                <a href="#" class="nav-wrapper__item-link nav-wrapper__item-link--active active"
+                                    aria-label="Donate">Donate</a>
+                            </li>
+                            <li class="nav-wrapper__item">
+                                <a href="#" class="nav-wrapper__item-link" aria-label="Contact us">Contact us</a>
+                            </li>
+
+                        </ul>
+                    </nav>
+                    <div class="credentials">
+                        <a href="https://www.figma.com/file/ypzT9idgAILaSRVRmDAJxn/online-zoo-3-weeks" target='_blank'
+                            class="credentials__item-link" aria-label="Designed by">Designed by ©</a>
+                    </div>
+                </div>
+
             </div>
         </div>
     </header>
@@ -329,19 +325,7 @@
     </footer>
     <!-- / footer -->
 
-    <script>
-        const once = document.getElementById('once')
-        const monthly = document.getElementById('monthly')
-
-        once.addEventListener('click', () => {
-            once.classList.add('donation__radiobuttons-period__item--active');
-            monthly.classList.remove('donation__radiobuttons-period__item--active')
-        })
-
-        monthly.addEventListener('click', () => {
-            monthly.classList.add('donation__radiobuttons-period__item--active')
-            once.classList.remove('donation__radiobuttons-period__item--active');
-        })
+    <script src='./script.js'>
     </script>
 </body>
 
