@@ -24,6 +24,11 @@ body {
     background-size: 160%;
   }
 }
+@media (max-width: 767px) {
+  .section-hero-image {
+    background-position: 30% 30%;
+  }
+}
 .section-hero-image .section-inner {
   padding-top: 192px;
   padding-bottom: 192px;
