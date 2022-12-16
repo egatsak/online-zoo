@@ -234,7 +234,7 @@ fieldset {
   }
 
   &--size-sm {
-    min-width: $base * 32;
+    width: $base * 32;
   }
 
   &--size-mid {
@@ -446,6 +446,10 @@ fieldset {
       white-space: nowrap;
       text-decoration: none;
       transition: color $transition ease-in-out;
+
+      &:hover {
+        color: $color-primary-active-500;
+      }
 
       @media (max-width: $breakpoint-sm-max) {
         .section-header & {
@@ -1434,7 +1438,10 @@ fieldset {
         padding: $base * 4;
         background-color: $color-primary-100;
         border-radius: $base * 4.8;
-        cursor: pointer;
+
+        @media (max-width: $breakpoint-md-max) {
+          cursor: pointer;
+        }
 
         @media (max-width: $breakpoint-xs-max) {
           min-width: $base * 68;

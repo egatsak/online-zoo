@@ -143,7 +143,7 @@ fieldset {
   border: 1px solid #d31414;
 }
 .btn--size-sm {
-  min-width: 128px;
+  width: 128px;
 }
 .btn--size-mid {
   min-width: 240px;
@@ -334,6 +334,9 @@ fieldset {
   white-space: nowrap;
   text-decoration: none;
   transition: color 0.2s ease-in-out;
+}
+.nav-wrapper__item-link:hover {
+  color: #f9804b;
 }
 @media (max-width: 767px) {
   .section-header .nav-wrapper__item-link {
@@ -1249,7 +1252,11 @@ fieldset {
   padding: 16px;
   background-color: #f1f3f2;
   border-radius: 19.2px;
-  cursor: pointer;
+}
+@media (max-width: 991px) {
+  .section-testimonials .testimonials-list-wrapper .testimonials-list__item {
+    cursor: pointer;
+  }
 }
 @media (max-width: 575px) {
   .section-testimonials .testimonials-list-wrapper .testimonials-list__item {

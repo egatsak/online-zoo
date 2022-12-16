@@ -24,11 +24,6 @@ body {
     background-size: 160%;
   }
 }
-@media (max-width: 767px) {
-  .section-hero-image {
-    background-position: 30% 30%;
-  }
-}
 .section-hero-image .section-inner {
   padding-top: 192px;
   padding-bottom: 192px;
@@ -329,6 +324,7 @@ body {
   border: 1px solid #fe9013;
 }
 .section-pick-a-friend .section-inner .donation__radiobuttons-amount-radio::before {
+  box-sizing: border-box;
   position: absolute;
   display: block;
   top: 0;
@@ -340,6 +336,13 @@ body {
   cursor: pointer;
   content: "";
   transform: translate(-35%, -35%);
+}
+@media (max-width: 767px) {
+  .section-pick-a-friend .section-inner .donation__radiobuttons-amount-radio::before {
+    width: 24px;
+    height: 24px;
+    transform: translate(-43%, -43%);
+  }
 }
 .section-pick-a-friend .section-inner .donation__radiobuttons-amount-radio input {
   display: none;

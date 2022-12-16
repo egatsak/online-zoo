@@ -129,42 +129,42 @@
                             <div class="donation__radiobuttons-amount">
                                 <label
                                     class="donation__radiobuttons-amount-radio donation__radiobuttons-amount-radio--5000">
-                                    <input type="radio" name="gender" value="5000">
+                                    <input type="radio" value="5000">
                                     <span class="value subtitle">$5000</span>
                                 </label>
                                 <label
                                     class="donation__radiobuttons-amount-radio donation__radiobuttons-amount-radio--2000">
-                                    <input type="radio" name="gender" value="2000">
+                                    <input type="radio" value="2000">
                                     <span class="value subtitle">$2000</span>
                                 </label>
                                 <label
-                                    class="donation__radiobuttons-amount-radio donation__radiobuttons-amount-radio--1000 donation__radiobuttons-amount-radio--active">
-                                    <input type="radio" name="gender" value="1000" checked>
+                                    class="donation__radiobuttons-amount-radio donation__radiobuttons-amount-radio--1000">
+                                    <input type="radio" value="1000">
                                     <span class="value subtitle">$1000</span>
                                 </label>
                                 <label
                                     class="donation__radiobuttons-amount-radio donation__radiobuttons-amount-radio--500">
-                                    <input type="radio" name="gender" value="500">
+                                    <input type="radio" value="500">
                                     <span class="value subtitle">$500</span>
                                 </label>
                                 <label
                                     class="donation__radiobuttons-amount-radio donation__radiobuttons-amount-radio--250">
-                                    <input type="radio" name="gender" value="250">
+                                    <input type="radio" value="250">
                                     <span class="value subtitle">$250</span>
                                 </label>
                                 <label
-                                    class="donation__radiobuttons-amount-radio donation__radiobuttons-amount-radio--100">
-                                    <input type="radio" name="gender" value="100">
+                                    class="donation__radiobuttons-amount-radio donation__radiobuttons-amount-radio--100  donation__radiobuttons-amount-radio--active">
+                                    <input type="radio" value="100" checked>
                                     <span class="value subtitle">$100</span>
                                 </label>
                                 <label
                                     class="donation__radiobuttons-amount-radio donation__radiobuttons-amount-radio--50">
-                                    <input type="radio" name="gender" value="50">
+                                    <input type="radio" value="50">
                                     <span class="value subtitle">$50</span>
                                 </label>
                                 <label
                                     class="donation__radiobuttons-amount-radio donation__radiobuttons-amount-radio--25">
-                                    <input type="radio" name="gender" value="25">
+                                    <input type="radio" value="25">
                                     <span class="value subtitle">$25</span>
                                 </label>
                             </div>
@@ -172,20 +172,20 @@
                             <div class="flex-center">
                                 <div class="donation__input-wrapper">
                                     <input type="number" class="input input--number donation__input-wrapper--number"
-                                        placeholder='Another amount' min='0' max="9999">
+                                        placeholder='Another amount' min='0' max="9999" value="100" name="amount">
                                     <div class='donation__input-wrapper--currency'>$</div>
                                 </div>
                             </div>
 
                             <div class="donation__radiobuttons-period-wrapper-outer">
                                 <div class="donation__radiobuttons-period-wrapper-inner">
-                                    <label id='monthly' class="donation__radiobuttons-period__item">
-                                        <input type="radio" name="period" value="monthly">
+                                    <label id='label-monthly' for="monthly" class="donation__radiobuttons-period__item">
+                                        <input id='monthly' type="radio" name="period" value="monthly">
                                         <span>Monthly</span>
                                     </label>
-                                    <label id='once'
+                                    <label id='label-once' for="once"
                                         class="donation__radiobuttons-period__item donation__radiobuttons-period__item--active">
-                                        <input type="radio" name="period" value="once" checked>
+                                        <input id='once' type="radio" name="period" value="once" checked>
                                         <span class="value">Once</span>
                                     </label>
                                 </div>

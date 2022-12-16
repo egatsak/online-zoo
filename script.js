@@ -99,33 +99,32 @@ slider.addEventListener("change", changeSlider);
 slider.addEventListener("mousemove", throttle(changeSlider, 300));
 
 //////////////////////////////////////////////////////////////////
-const popupModal = document.querySelector(".modal");
-const popupCloseBtn = document.querySelector(".popup-close-btn");
-const popupContent = document.querySelector(".card-popup-wrapper");
-const cardWrapper = document.querySelector(".popup-item-wrapper");
-popupContent.addEventListener("click", (e) => {
-  e.stopPropagation();
-});
-popupCloseBtn.addEventListener("click", () => {
-  popupModal.classList.remove("modal--active");
-});
-popupModal.addEventListener("click", () => {
-  popupModal.classList.remove("modal--active");
-});
+if (viewportWidth < 992) {
+  const popupModal = document.querySelector(".modal");
+  const popupCloseBtn = document.querySelector(".popup-close-btn");
+  const popupContent = document.querySelector(".card-popup-wrapper");
+  const cardWrapper = document.querySelector(".popup-item-wrapper");
+  popupContent.addEventListener("click", (e) => {
+    e.stopPropagation();
+  });
+  popupCloseBtn.addEventListener("click", () => {
+    popupModal.classList.remove("modal--active");
+  });
+  popupModal.addEventListener("click", () => {
+    popupModal.classList.remove("modal--active");
+  });
 
-reviews.forEach((item) =>
-  item.addEventListener("click", () => {
-    const cardClone = item.cloneNode(true);
-    console.log(cardClone);
-
-    cardClone.classList.add(".popup__item");
-    cardClone.classList.remove(".testimonials-item-wrapper");
-    cardWrapper.innerHTML = "";
-    cardWrapper.appendChild(cardClone);
-    popupModal.classList.add("modal--active");
-  })
-);
-
+  reviews.forEach((item) =>
+    item.addEventListener("click", () => {
+      const cardClone = item.cloneNode(true);
+      cardClone.classList.add(".popup__item");
+      cardClone.classList.remove(".testimonials-item-wrapper");
+      cardWrapper.innerHTML = "";
+      cardWrapper.appendChild(cardClone);
+      popupModal.classList.add("modal--active");
+    })
+  );
+}
 // === HELPERS ===
 function randomInteger(min) {
   return function (max) {

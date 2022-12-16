@@ -63,6 +63,7 @@ $color-primary: $color-primary-700;
 // === / VARIABLES ===
 
 // === COMMON ===
+
 body {
   line-height: 1.4;
 }
@@ -384,6 +385,7 @@ body {
           }
 
           &::before {
+            box-sizing: border-box;
             position: absolute;
             display: block;
             top: 0;
@@ -395,6 +397,12 @@ body {
             cursor: pointer;
             content: "";
             transform: translate(-35%, -35%);
+
+            @media (max-width: $breakpoint-sm-max) {
+              width: $base * 6;
+              height: $base * 6;
+              transform: translate(-43%, -43%);
+            }
           }
 
           input {
